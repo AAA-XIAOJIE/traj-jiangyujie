@@ -1,77 +1,39 @@
 # traj-jiangyujie · 行人轨迹课程
 
-本仓库用于逐周完成行人轨迹课程。当前已完成 **Week 01 / A1：ETH/UCY 五场景轨迹可视化**，后续周次独立存放。
+姜昱杰的课程作业，按 `week01`–`week08` 组织。目前完成 **第 1 周 A1：ETH/UCY 五场景轨迹图**。
 
-![ETH/UCY 五场景轨迹总览](week01/figures/eth_ucy_trajectory_overview.png)
+![五场景轨迹总览](week01/figures/eth_ucy_trajectory_overview.png)
 
-**查看本周作业：** [完整报告](week01/README.md) · [一段结论](week01/conclusion.md) · [矢量 PDF](week01/figures/eth_ucy_trajectory_overview.pdf) · [可编辑 SVG](week01/figures/eth_ucy_trajectory_overview.svg)
+**本周交付：** [五张场景图与总览图](week01/figures) · [一段结论](week01/conclusion.md) · [场景统计](week01/results/scene_summary.csv) · [代码](week01)
 
-## 已完成的内容
+## 运行
 
-- 从 GitHub 固定提交下载 `seq_eth`、`seq_hotel`、`zara01`、`zara02`、`students03` 五个场景；`students03` 对应源目录 `univ`、原始名称 `students003`。
-- 解析原生标注，按场景与个体 ID 分组、按时间排序，生成每人独立的轨迹。
-- 生成五张“全场景 + 12 s 细节”图和一张总览图，均有 PNG、PDF、SVG。
-- 提供数据来源与 SHA-256 校验、标准化字段、逐轨迹统计、断线审计、阈值敏感性与运行记录。
-
-当前输入是已有标注的轨迹坐标，属于**轨迹读取与可视化任务**；A1 不需要重新训练目标检测器或从视频跟踪。A2–A5 的速度、间距/TTC、基本图和行为判别留待后续周次。
-
-## 安装与一键复现
-
-已验证：Python 3.12。推荐使用独立虚拟环境。
-
-### Windows PowerShell
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe -m pip install -e . --no-deps
-.\.venv\Scripts\python.exe -X utf8 scripts/run_week01.py --download
-.\.venv\Scripts\python.exe -m pytest -q
-```
-
-### macOS / Linux
+已验证 Python 3.12。在仓库根目录安装依赖并运行：
 
 ```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python -m pip install -e . --no-deps
-.venv/bin/python scripts/run_week01.py --download
-.venv/bin/python -m pytest -q
+python -m pip install -r requirements.txt
+python -X utf8 run.py --download
 ```
 
-首次下载约 3.1 MB，共 25 个文件，包含五个轨迹数据文件及来源/坐标核验资料，不下载视频。原始数据保存在 `data/raw/`，经统一字段后的数据保存在 `data/processed/`。这两个目录由脚本生成，不加入 Git；图、结论、统计和复现代码随仓库发布。所有处理均可在数据下载完成后离线运行。
+首次下载约 3.1 MB（五场景坐标和核验资料，共 25 个文件），存入 `data/raw/`；再次运行只核验已有文件。下载完成后可用 `python -X utf8 run.py` 离线重画。
 
-`--download` 对已有文件只核验哈希；文件被改动会报错，不会静默覆盖。缺少数据时，可单独运行 `python -m traj_course download`。使用 `python -m traj_course verify` 进行纯离线校验。上述命令默认在仓库根目录执行；`scripts/run_week01.py` 也支持从其他工作目录调用。
+仓库保留六张 PNG；运行时同时生成本地 PDF/SVG，便于编辑和打印。原始数据、缓存和重复导出格式不加入 Git。测试命令：`python -m pip install pytest==9.1.1`，然后 `python -m pytest -q`。
 
-## 目录
+## 文件
 
-```text
-traj-jiangyujie/
-├── README.md                  # 安装、结果入口和运行方法
-├── pyproject.toml             # 可安装的 Python 包与命令行入口
-├── requirements.txt           # 本次验证使用的依赖版本
-├── CITATION.cff                # 课程代码引用元数据
-├── NOTICE.md                  # 来源与授权范围
-├── configs/week01.json        # 五场景、帧率、断线规则、图像分辨率
-├── data/manifest.json         # 固定源 URL、提交、大小、SHA-256
-├── data/raw/                  # 本地下载的原始文件（Git 忽略）
-├── data/processed/            # 统一字段的数据（Git 忽略）
-├── docs/                      # 数据说明、代码复用、方法、提交说明
-├── src/traj_course/           # 下载 / 解析 / 几何 / 绘图 / 报告 / CLI
-├── scripts/run_week01.py      # 从任意目录运行的复现入口
-├── tests/                     # 解析、身份、时间及数据完整性测试
-├── week01/                    # 本周图、结论和机器可读结果
-└── week02/ … week08/           # 后续周次目录，尚未提交作业
-```
+- `run.py`：唯一运行入口，下载、核验、绘图、导出统计。
+- `week01/`：四个模块（数据、轨迹、绘图、样式）、图件、结论和场景统计。
+- `week02/`–`week08/`：保留后续周次的作业目录。
+- `configs/week01.json`：场景、帧率、断线阈值和分辨率。
+- `data/manifest.json`：固定下载地址、文件大小和 SHA-256。
+- `tests/`：坐标顺序、个体隔离、时间断线及校验测试；GitHub 自动运行。
 
-## 方法说明
+## 数据与读图
 
-ETH 的原生点间隔为 0.4 s；UCY 是不等间隔轨迹控制点，图中的直线是几何连接，不是额外观测。默认断开 UCY 超过 4 s 的控制点间隔，完整保留原数据与被断开区间清单。总览颜色表示场景内部相对时间，五个子图空间尺度一致，坐标原点各自保留。总览叠加了不同时刻的路径，不能据交叉线直接判断避让、碰撞或密度。
+数据来自 [erichhhhho/DataExtraction](https://github.com/erichhhhho/DataExtraction/tree/74006729b1bafafa4f9530150af3ba282b1b0ef3)，固定提交 `74006729b1bafafa4f9530150af3ba282b1b0ef3`。五场景为 `seq_eth`、`seq_hotel`、`zara01`、`zara02`、`students03`（源目录 `univ`，原名 `students003`）。
 
-代码复用了已有轨迹工作台按 ID 分组的绘图逻辑，以及 PEM-Flow 论文中的样式和连续段处理，并做了面向 ETH/UCY 的独立适配。[复用记录](docs/REUSE.md)列出原文件哈希和具体函数，不依赖原工作台、本机硬编码路径或未公开实验数据。
+原 CSV 的四行依次是 frame、ID、y、x，读取后明确转换为米制 x、y，按场景内个体 ID 分组并按帧排序。ETH 保留 0.4 s 原生采样（两场景帧率基准分别为 15、25 fps）；UCY 使用 25 fps 的不等间隔控制点，超过 4 s 的间隔断开。4 s 是显示参数，连线属于几何插值，不增加观测点。源文件校验和 ETH obsmat / UCY pixel + H 坐标一致性核验在每次运行时执行；后者不是独立定位精度验证。
 
-更多细节：[数据卡与字段](docs/DATA_CARD.md) · [本周报告](week01/README.md) · [Git 提交与发布](docs/GITHUB.md)。
+颜色表示时间，不代表身份或速度。总览按各场景记录时段归一化时间，各图均为 26 × 20 m 等比例显示、保留各自原点；时间零点为该场景首个标注帧。单场景右图选择整秒网格上可见个体最多的 12 s 窗口，并列取最早，灰线为全时段背景。空间路径交叉不能单独证明碰撞或避让；本周只完成 A1。
 
-## 数据来源
-
-使用 [erichhhhho/DataExtraction](https://github.com/erichhhhho/DataExtraction) 的固定版本 `74006729b1bafafa4f9530150af3ba282b1b0ef3`。该仓库提供 ETH/UCY 的格式转换结果；本项目不是原始数据采集方。来源文件与校验值均列入 [manifest](data/manifest.json)。
+代码沿用既有工作台 `visualization.py` 的按 ID 绘轨迹逻辑、论文 `重绘_fig8_轨迹总览.py` 的连续段处理，以及 `pemflow_style.py` 的字体、分面和导出样式，独立适配 ETH/UCY。来源与授权范围见 [NOTICE](NOTICE.md)。

@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from traj_course.analysis import build_geometry, clip_segments, select_window
-from traj_course.io import load_scene, safe_data_path, verify_data
+from week01.analysis import build_geometry, clip_segments, select_window
+from week01.data import load_scene, safe_data_path, verify_data
 
 
 ETH = {"name": "fixture", "family": "ETH", "fps": 15, "expected_step_frames": 6, "max_link_s": .4}

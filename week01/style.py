@@ -1,4 +1,4 @@
-"""PEM-Flow style adapted for the course figure; see docs/REUSE.md.
+"""PEM-Flow style adapted for the course figure; see README.md and NOTICE.md.
 
 The apply/panel_label structure, Arial typography, TrueType PDF export,
 white canvas and restrained axes come from the existing pemflow_style.py.

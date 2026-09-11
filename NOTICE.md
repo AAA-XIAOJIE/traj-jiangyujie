@@ -1,7 +1,5 @@
 # 来源与授权说明
 
-课程包包含本次编写的 ETH/UCY 适配器，以及作者既有轨迹工程和 PEM-Flow 制图逻辑的通用部分。版权归各自作者所有；本次交付未代作者指定新的开源许可证。引用本代码请使用 `CITATION.cff`。
+本课程代码包含本次编写的 ETH/UCY 适配器，以及作者既有轨迹工程和 PEM-Flow 制图逻辑的通用部分。版权归各自作者所有；本次发布未代作者指定新的开源许可证。
 
-ETH/UCY 数据和上游格式转换文件来自 [erichhhhho/DataExtraction](https://github.com/erichhhhho/DataExtraction)。数据权利归原始数据作者及相应权利人所有。本包不对原始数据授予新许可，原始文件仅通过固定链接下载到本地，并保留来源及哈希记录。上游仓库当前未附独立许可证文件，不能把代码包的发布等同于原数据被重新授权。
-
-论文图形样式参考作者已有 PEM-Flow 制图脚本。本仓库的轨迹图来自本次 ETH/UCY 数据分析，不包含原论文的私有轨迹或现场照片。
+ETH/UCY 数据及格式转换文件来自 [erichhhhho/DataExtraction](https://github.com/erichhhhho/DataExtraction/tree/74006729b1bafafa4f9530150af3ba282b1b0ef3)，权利归原始作者及相应权利人。本仓库不对原数据授予新许可，仅提供固定版本的下载链接及校验值。轨迹图来自本次 ETH/UCY 分析，不包含原论文的私有轨迹或现场照片。

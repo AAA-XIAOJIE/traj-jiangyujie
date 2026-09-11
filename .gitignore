@@ -7,10 +7,10 @@ __pycache__/
 .DS_Store
 .env
 .env.*
-data/raw/*
-!data/raw/.gitkeep
-data/processed/*
-!data/processed/.gitkeep
+data/raw/
+data/processed/
+week01/figures/*.pdf
+week01/figures/*.svg
 dist/
 build/
 .local/

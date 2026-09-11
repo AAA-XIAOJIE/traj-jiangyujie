@@ -57,7 +57,7 @@ def verify_data(root: Path) -> None:
     for entry in read_json(root / "data" / "manifest.json")["files"]:
         path = safe_data_path(root / "data" / "raw", entry["path"])
         if not path.exists():
-            raise FileNotFoundError(f"Missing {entry['path']}; run: traj-course download")
+            raise FileNotFoundError(f"Missing {entry['path']}; run: python run.py --download")
         if sha256(path) != entry["sha256"]:
             raise ValueError(f"Checksum mismatch: {entry['path']}")
 
