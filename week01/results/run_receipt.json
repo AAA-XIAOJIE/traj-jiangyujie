@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "package_version": "0.1.0",
+  "python": "3.12.14",
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "matplotlib": "3.11.1"
+  },
+  "data_commit": "74006729b1bafafa4f9530150af3ba282b1b0ef3",
+  "config_sha256": "f4e0e2b6d1f3f14450b811033fbdf441d6935d5e1226c23d62d5bcbc5ace6025",
+  "manifest_sha256": "57e25ab0836ce37cf859ee43c4fd7a206f758fe1ed39ecf9fa757adf26eea5b1",
+  "tracks": 1536,
+  "annotation_points": 25126,
+  "coordinate_consistency": {
+    "seq_eth": {
+      "reference": "obsmat columns 3 and 5 (1-based)",
+      "max_export_rounding_difference_m": 0.0005020298895490616,
+      "checked_points": 8908
+    },
+    "seq_hotel": {
+      "reference": "obsmat columns 3 and 5 (1-based)",
+      "max_export_rounding_difference_m": 0.0004850505128346311,
+      "checked_points": 6544
+    },
+    "zara01": {
+      "reference": "pixel.csv [u,v,1] projected through H, homogeneous normalization",
+      "max_export_rounding_difference_m": 0.00048194807187498616,
+      "checked_points": 1520
+    },
+    "zara02": {
+      "reference": "pixel.csv [u,v,1] projected through H, homogeneous normalization",
+      "max_export_rounding_difference_m": 0.000438850311618524,
+      "checked_points": 2375
+    },
+    "students03": {
+      "reference": "pixel.csv [u,v,1] projected through H, homogeneous normalization",
+      "max_export_rounding_difference_m": 7.039868914356681e-05,
+      "checked_points": 5779
+    }
+  },
+  "figures": {
+    "week01/figures/eth_ucy_trajectory_overview.pdf": "427c3e28282b37153ed4981e00a4ccca8e6b297dfb7832530856855b46b2ba3d",
+    "week01/figures/eth_ucy_trajectory_overview.png": "3956e408aab85dd2ee6004c62e94e1b727bba37955239b6a07bbe7e5155cef50",
+    "week01/figures/eth_ucy_trajectory_overview.svg": "9ee0ed8164ae7caf1feb48834ab85210dc35dec66ab16687095ee15dd72bda6a",
+    "week01/figures/seq_eth_trajectories.pdf": "ce92189e715dec1cf01eb0fab542967986fbc0f4d8a06eb6b59d1d9296405c09",
+    "week01/figures/seq_eth_trajectories.png": "cefc169976a121887924d1ddbe5051bc8ce01135e627b66a3aae0070de5215c6",
+    "week01/figures/seq_eth_trajectories.svg": "eb4f139ccbcdbeb404fba34a1baaa1a2ef1825e2c46182abc9af78efbe100607",
+    "week01/figures/seq_hotel_trajectories.pdf": "ff4310f64bf48a73d4e478c613e9e758f80047bc7b463071f23644b60471a65a",
+    "week01/figures/seq_hotel_trajectories.png": "ff10d89654782ee76f57eccf822768698cf75c496ae452f0b50dc6e99c969d9d",
+    "week01/figures/seq_hotel_trajectories.svg": "6106545b4041fa61170bcc480b310275e6211be991360061b62810e38190d2ae",
+    "week01/figures/students03_trajectories.pdf": "dc8ba7c96d926f72e3af44259e3925a0f51cf2ab15dadcd2551f9e003b05fe80",
+    "week01/figures/students03_trajectories.png": "77dc5d39d43702e97a061f7ae32346d264272260fef0ce4f3289b1074408ca0c",
+    "week01/figures/students03_trajectories.svg": "a1b251d7d5ded702613ba3cdb336d9db86745a0332c26d0ff68ca2ca92d92945",
+    "week01/figures/zara01_trajectories.pdf": "8e7ea9236cdf66e0ae007d5a5492e3f990920491accef17ecf9123660950f8ca",
+    "week01/figures/zara01_trajectories.png": "2d96aa633c41ec59126b66b592937a8b0afd43310729b4ee8c4dad1dca5e8fd0",
+    "week01/figures/zara01_trajectories.svg": "a072ecc984fdb99506192ce179f587b7510a5c8e300c85a4c4c4ef1672febfd7",
+    "week01/figures/zara02_trajectories.pdf": "12a84fc85c5703a7965693cfb777ceb4fe6d373adc4d1ba793aa56c093ef88b2",
+    "week01/figures/zara02_trajectories.png": "d24ec19038246bf113c0780b7e40aca1d8cd4c2adfa99508030fc99d9e9b00f7",
+    "week01/figures/zara02_trajectories.svg": "f82fab888e634240774efcfa3c736220f7f3d947fe8e1ddd5b089699dfbf341d"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/erichhhhho/DataExtraction",
+  "commit": "74006729b1bafafa4f9530150af3ba282b1b0ef3",
+  "files": [
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/README.md",
+      "bytes": 871,
+      "sha256": "3a6e8db341a138bb88d8b084b55416ad7e7f142d4432fcd8b4b85f6b1b0ca58a"
+    },
+    {
+      "path": "seq_eth/world_coordinate.csv",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_eth/world_coordinate.csv",
+      "bytes": 206437,
+      "sha256": "ef1d6bc138d6f99b032e9837bcbbc973fe422459a89225360b0b127bdfacb985"
+    },
+    {
+      "path": "seq_eth/H.txt",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_eth/H.txt",
+      "bytes": 147,
+      "sha256": "b6b116c0e1ff9d2b26019d7a43341d6f2518163f6c74545f55a10fd66d523020"
+    },
+    {
+      "path": "seq_eth/pixel.csv",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_eth/pixel.csv",
+      "bytes": 151559,
+      "sha256": "8cc2c40528e6c354152b8985e1147ce8c40bf8f801125bb6b0fabdc35484c399"
+    },
+    {
+      "path": "seq_eth/ExtractDataandInterpolation.m",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_eth/ExtractDataandInterpolation.m",
+      "bytes": 6684,
+      "sha256": "07d08d609dd67ec817b5a3c76a43dadf77334d1d9c4cbf77e1582dd9d3f703de"
+    },
+    {
+      "path": "seq_eth/info.txt",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_eth/info.txt",
+      "bytes": 216,
+      "sha256": "34010c1c84cd2b1990529b1d7f1f556bc5cfed598216cd9e73ef06fdfa02971a"
+    },
+    {
+      "path": "seq_eth/obsmat.txt",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_eth/obsmat.txt",
+      "bytes": 1158040,
+      "sha256": "d452ae2185ecb1164c2fdf31e75f6236f4c2ffc02c751a6b2ae921740cbc60d1"
+    },
+    {
+      "path": "seq_hotel/world_coordinate.csv",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_hotel/world_coordinate.csv",
+      "bytes": 159331,
+      "sha256": "041a9ae12afd586b08b5f195c30a59f5dbd1a31c395f1a2461b8caf5ef8e416c"
+    },
+    {
+      "path": "seq_hotel/H.txt",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_hotel/H.txt",
+      "bytes": 147,
+      "sha256": "b62940ea5f69c89990673f91f88724937ed41387a39d8d68ad5bbc6d5ee5c8b7"
+    },
+    {
+      "path": "seq_hotel/pixel.csv",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_hotel/pixel.csv",
+      "bytes": 112042,
+      "sha256": "0cc7da6a8fe7a9db357fdcf6e2b79781cdd70cc28e29c2263157c9e547803d37"
+    },
+    {
+      "path": "seq_hotel/ExtractDataandInterpolation.m",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_hotel/ExtractDataandInterpolation.m",
+      "bytes": 6668,
+      "sha256": "f4876e32cf1269617dfd319006f7ca13ddcab16ecc9fe6e02e65041e848f3ff3"
+    },
+    {
+      "path": "seq_hotel/info.txt",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_hotel/info.txt",
+      "bytes": 378,
+      "sha256": "50e8394c4320629ff659a2ed5e8a107df18021479ebb0b4193b08bf24d45da43"
+    },
+    {
+      "path": "seq_hotel/obsmat.txt",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/seq_hotel/obsmat.txt",
+      "bytes": 850720,
+      "sha256": "2b8577595204a6b780b80258fd50da35adb7293e3e06ad6f8e1b60965e7dde6e"
+    },
+    {
+      "path": "zara01/world_coordinate.csv",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/zara01/world_coordinate.csv",
+      "bytes": 35793,
+      "sha256": "dbf18f031e7b815f3515308fe3cd4dad0e67f6caa508a5787c2eb2157898b4cf"
+    },
+    {
+      "path": "zara01/H.txt",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/zara01/H.txt",
+      "bytes": 147,
+      "sha256": "6660505a8391b98bb56ec86355f5f25069c9bc0040fddffaa15e7b1e032abda8"
+    },
+    {
+      "path": "zara01/pixel.csv",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/zara01/pixel.csv",
+      "bytes": 23981,
+      "sha256": "1ffa237bdb5f53fd625b3551853f18d4b56a976825a68ff11b17570dec582dc4"
+    },
+    {
+      "path": "zara01/ExtractDataandInterpolation.m",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/zara01/ExtractDataandInterpolation.m",
+      "bytes": 9618,
+      "sha256": "4e4c7a8b9000a403b87187442cb74158875a8ecf7f8311c5ab5ef37363ec3023"
+    },
+    {
+      "path": "zara02/world_coordinate.csv",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/zara02/world_coordinate.csv",
+      "bytes": 56593,
+      "sha256": "0c35b7c78bd0539d3650d88de6ae68c16dcfec8a26cf27f5bb2f28ca7deeee93"
+    },
+    {
+      "path": "zara02/H.txt",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/zara02/H.txt",
+      "bytes": 146,
+      "sha256": "d2a4133ce1fe57524898d0e2b41db9f3bd564a21c138407a06ba8790e870e3bb"
+    },
+    {
+      "path": "zara02/pixel.csv",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/zara02/pixel.csv",
+      "bytes": 38400,
+      "sha256": "d3746be8bd3bc744e7c601a6f046bac293e382697a3c7e190fe1a7f1688268a6"
+    },
+    {
+      "path": "zara02/ExtractDataandInterpolation.m",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/zara02/ExtractDataandInterpolation.m",
+      "bytes": 9865,
+      "sha256": "262cfaeb6618e353d874b25c4a01516cad034887d0bd2af1dc0b4f0ca5ea6a56"
+    },
+    {
+      "path": "univ/world_coordinate.csv",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/univ/world_coordinate.csv",
+      "bytes": 138267,
+      "sha256": "c5ebc74091aad4002ee5b077f942d2f3d4ef1bebd92c75d001bb66c7664e8659"
+    },
+    {
+      "path": "univ/H.txt",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/univ/H.txt",
+      "bytes": 147,
+      "sha256": "f97e9184ecec500bd4ab5f7113bfd4049885f4858ec8886ccf63d932d6c8f24a"
+    },
+    {
+      "path": "univ/pixel.csv",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/univ/pixel.csv",
+      "bytes": 93802,
+      "sha256": "da0ea8d816ed050383e811d4b1f9abace1cb48a8bb8b50cb73ee71c132fec16b"
+    },
+    {
+      "path": "univ/ExtractDataandInterpolation.m",
+      "url": "https://raw.githubusercontent.com/erichhhhho/DataExtraction/74006729b1bafafa4f9530150af3ba282b1b0ef3/univ/ExtractDataandInterpolation.m",
+      "bytes": 9633,
+      "sha256": "b920f09c45d46cf3c30b337a4c7f65fe09e24b540c7f8b6ef0de2681d664d5cf"
+    }
+  ]
+}

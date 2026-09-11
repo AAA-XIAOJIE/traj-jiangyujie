@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "week": "week01",
+  "task": "A1",
+  "preview_window_s": 12.0,
+  "overview_dpi": 600,
+  "scene_dpi": 300,
+  "scenes": [
+    {"name": "seq_eth", "label": "ETH", "family": "ETH", "source_dir": "seq_eth", "fps": 15.0, "expected_step_frames": 6, "max_link_s": 0.4, "sampling": "regular_observations"},
+    {"name": "seq_hotel", "label": "Hotel", "family": "ETH", "source_dir": "seq_hotel", "fps": 25.0, "expected_step_frames": 10, "max_link_s": 0.4, "sampling": "regular_observations"},
+    {"name": "zara01", "label": "Zara 01", "family": "UCY", "source_dir": "zara01", "fps": 25.0, "expected_step_frames": null, "max_link_s": 4.0, "sampling": "irregular_control_points"},
+    {"name": "zara02", "label": "Zara 02", "family": "UCY", "source_dir": "zara02", "fps": 25.0, "expected_step_frames": null, "max_link_s": 4.0, "sampling": "irregular_control_points"},
+    {"name": "students03", "label": "Students 03", "family": "UCY", "source_dir": "univ", "fps": 25.0, "expected_step_frames": null, "max_link_s": 4.0, "sampling": "irregular_control_points"}
+  ]
+}

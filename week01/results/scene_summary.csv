@@ -1,0 +1,6 @@
+scene,label,family,sampling,annotation_points,tracks,first_frame,last_frame,coverage_s,fps,rendered_edges,unlinked_long_intervals,singleton_components,x_min_m,x_max_m,y_min_m,y_max_m
+seq_eth,ETH,ETH,regular_observations,8908,360,780,12381,773.400000,15.000000,8548,0,0,-7.446200,13.869000,-3.270500,13.288000
+seq_hotel,Hotel,ETH,regular_observations,6544,390,1,18061,722.400000,25.000000,6154,0,1,-3.288000,4.380200,-10.254000,4.316000
+zara01,Zara 01,UCY,irregular_control_points,1520,148,0,9014,360.560000,25.000000,1365,7,0,-10.824000,7.864800,-9.426200,2.444200
+zara02,Zara 02,UCY,irregular_control_points,2375,204,6,10518,420.480000,25.000000,2117,54,23,-11.083000,8.046500,-10.730000,2.424700
+students03,Students 03,UCY,irregular_control_points,5779,434,0,5404,216.160000,25.000000,5269,76,24,-7.936500,8.933800,-6.395900,5.199900

@@ -1,0 +1,139 @@
+{
+  "source_checksums": "pass",
+  "count_conservation": "pass",
+  "local_document_links": "pass",
+  "figures": [
+    {
+      "file": "week01/figures/eth_ucy_trajectory_overview.pdf",
+      "bytes": 437853
+    },
+    {
+      "file": "week01/figures/eth_ucy_trajectory_overview.png",
+      "bytes": 4690913,
+      "pixels": [
+        7020,
+        5160
+      ],
+      "dpi": [
+        600,
+        600
+      ]
+    },
+    {
+      "file": "week01/figures/eth_ucy_trajectory_overview.svg",
+      "bytes": 4104399,
+      "editable_text_elements": 93,
+      "vector_paths": 23522
+    },
+    {
+      "file": "week01/figures/seq_eth_trajectories.pdf",
+      "bytes": 312621
+    },
+    {
+      "file": "week01/figures/seq_eth_trajectories.png",
+      "bytes": 1017755,
+      "pixels": [
+        3510,
+        1740
+      ],
+      "dpi": [
+        300,
+        300
+      ]
+    },
+    {
+      "file": "week01/figures/seq_eth_trajectories.svg",
+      "bytes": 3074062,
+      "editable_text_elements": 43,
+      "vector_paths": 17834
+    },
+    {
+      "file": "week01/figures/seq_hotel_trajectories.pdf",
+      "bytes": 217709
+    },
+    {
+      "file": "week01/figures/seq_hotel_trajectories.png",
+      "bytes": 669621,
+      "pixels": [
+        3510,
+        1740
+      ],
+      "dpi": [
+        300,
+        300
+      ]
+    },
+    {
+      "file": "week01/figures/seq_hotel_trajectories.svg",
+      "bytes": 2199503,
+      "editable_text_elements": 43,
+      "vector_paths": 12713
+    },
+    {
+      "file": "week01/figures/students03_trajectories.pdf",
+      "bytes": 251167
+    },
+    {
+      "file": "week01/figures/students03_trajectories.png",
+      "bytes": 1263956,
+      "pixels": [
+        3510,
+        1740
+      ],
+      "dpi": [
+        300,
+        300
+      ]
+    },
+    {
+      "file": "week01/figures/students03_trajectories.svg",
+      "bytes": 1899047,
+      "editable_text_elements": 43,
+      "vector_paths": 10948
+    },
+    {
+      "file": "week01/figures/zara01_trajectories.pdf",
+      "bytes": 100988
+    },
+    {
+      "file": "week01/figures/zara01_trajectories.png",
+      "bytes": 646060,
+      "pixels": [
+        3510,
+        1740
+      ],
+      "dpi": [
+        300,
+        300
+      ]
+    },
+    {
+      "file": "week01/figures/zara01_trajectories.svg",
+      "bytes": 513839,
+      "editable_text_elements": 43,
+      "vector_paths": 2885
+    },
+    {
+      "file": "week01/figures/zara02_trajectories.pdf",
+      "bytes": 123626
+    },
+    {
+      "file": "week01/figures/zara02_trajectories.png",
+      "bytes": 793610,
+      "pixels": [
+        3510,
+        1740
+      ],
+      "dpi": [
+        300,
+        300
+      ]
+    },
+    {
+      "file": "week01/figures/zara02_trajectories.svg",
+      "bytes": 778003,
+      "editable_text_elements": 43,
+      "vector_paths": 4402
+    }
+  ]
+}
