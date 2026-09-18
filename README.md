@@ -1,6 +1,11 @@
 # traj-jiangyujie · 行人轨迹课程
 
-姜昱杰的课程作业，按 `week01`–`week08` 组织。目前完成 **第 1 周 A1：ETH/UCY 五场景轨迹图**。
+姜昱杰的课程作业，按 `week01`–`week08` 组织。
+
+- [第 2 周：圆环对跖点实验与 ORCA 行为模型](week02/README.md)：真实轨迹、机制、从初始状态出发的仿真、对照与失败分析。
+- [第 1 周：ETH/UCY 五场景轨迹图](week01/README.md)。
+
+第二周复现：安装下方依赖后运行 `python -X utf8 -m week02.model.run`，输入数据已包含在课程包中。
 
 ![五场景轨迹总览](week01/figures/eth_ucy_trajectory_overview.png)
 

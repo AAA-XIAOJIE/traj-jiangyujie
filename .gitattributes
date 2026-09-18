@@ -7,3 +7,4 @@
 *.png binary
 *.pdf binary
 *.svg text eol=lf
+week02/model/data/*.txt -text

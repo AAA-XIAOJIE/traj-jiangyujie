@@ -1,0 +1,22 @@
+{
+  "fps": 25.0,
+  "coordinate_scale_to_m": 0.01,
+  "initial_velocity_window_s": 0.2,
+  "calibration_end_s": 2.0,
+  "body_radius_m": 0.25,
+  "time_horizon_s": 2.0,
+  "anticipation_s": 4.0,
+  "start_response_s": 0.5,
+  "max_speed_factor": 1.2,
+  "goal_tolerance_m": 0.5,
+  "right_bias_candidates_rad": [0.3, 0.5, 0.7],
+  "selected_right_bias_rad": 0.3,
+  "side_seed": 42,
+  "right_preference_probability": 0.65,
+  "source_assumptions": {
+    "fps": "25 fps from Xiao et al. (2018), arXiv:1808.01443, Section 2",
+    "units": "centimeters inferred from initial fitted radius about 1007 source units versus 10 m design",
+    "columns": "ID, frame, x, y, height; fifth field 160/170/180 is unused",
+    "goals": "2 * fitted_initial_circle_center - initial_position; no final coordinates used"
+  }
+}

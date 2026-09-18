@@ -11,6 +11,8 @@ data/raw/
 data/processed/
 week01/figures/*.pdf
 week01/figures/*.svg
+week02/results/*.pdf
+week02/results/*.svg
 dist/
 build/
 .local/

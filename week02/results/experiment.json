@@ -1,0 +1,64 @@
+{
+  "source_sha256": "05d52540e3a4f427f52627cc4aaf9c7d1dde7228ca5513995284d0f52f14d790",
+  "rows": 27200,
+  "people": 64,
+  "frames": 425,
+  "first_frame": 37,
+  "last_frame": 461,
+  "fitted_center_m": [
+    0.1329353389843671,
+    -0.0921490133465328
+  ],
+  "fitted_radius_m": 10.069769081140558,
+  "config": {
+    "fps": 25.0,
+    "coordinate_scale_to_m": 0.01,
+    "initial_velocity_window_s": 0.2,
+    "calibration_end_s": 2.0,
+    "body_radius_m": 0.25,
+    "time_horizon_s": 2.0,
+    "anticipation_s": 4.0,
+    "start_response_s": 0.5,
+    "max_speed_factor": 1.2,
+    "goal_tolerance_m": 0.5,
+    "right_bias_candidates_rad": [
+      0.3,
+      0.5,
+      0.7
+    ],
+    "selected_right_bias_rad": 0.3,
+    "side_seed": 42,
+    "right_preference_probability": 0.65,
+    "source_assumptions": {
+      "fps": "25 fps from Xiao et al. (2018), arXiv:1808.01443, Section 2",
+      "units": "centimeters inferred from initial fitted radius about 1007 source units versus 10 m design",
+      "columns": "ID, frame, x, y, height; fifth field 160/170/180 is unused",
+      "goals": "2 * fitted_initial_circle_center - initial_position; no final coordinates used"
+    }
+  },
+  "observed": {
+    "people": 64,
+    "duration_s": 16.96,
+    "mean_path_m": 22.324204046769655,
+    "median_detour_ratio": 1.0885585032361047,
+    "mean_speed_mps": 1.3041386715717647,
+    "min_mean_radius_m": 3.5377198812857356,
+    "time_min_mean_radius_s": 5.32,
+    "right_fraction": 0.59375,
+    "left_fraction": 0.28125,
+    "right_fraction_zero_threshold": 0.65625,
+    "neutral_fraction": 0.125,
+    "median_max_lateral_m": 2.1492860557584104,
+    "approach_speed_mps": 2.2553799217202766,
+    "closest_approach_speed_mps": 1.8151140127619834,
+    "slower_at_closest_fraction": 0.765625,
+    "mean_heading_deviation_deg": 16.12530496882604,
+    "arrived_by_end": 64,
+    "median_arrival_s_completed_only": 12.76,
+    "min_swept_center_distance_m": 0.1560270009453492,
+    "disk_overlap_pair_intervals": 1154,
+    "disk_overlap_unique_pairs": 96,
+    "ade_after_calibration_m": 0.0,
+    "fde_m": 0.0
+  }
+}
