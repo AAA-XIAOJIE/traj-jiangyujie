@@ -38,11 +38,12 @@ def state_hash(model):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--config', type=Path, default=ROOT / 'config.json')
     parser.add_argument('--output', type=Path, default=ROOT.parent / 'results')
     parser.add_argument('--smoke', action='store_true', help='One epoch/seed in separate output; not reportable')
     parser.add_argument('--evaluate-only', action='store_true', help='Verify saved checkpoints on fixed splits')
     args = parser.parse_args()
-    config = json.loads((ROOT / 'config.json').read_text(encoding='utf-8'))
+    config = json.loads(args.config.read_text(encoding='utf-8'))
     if args.smoke:
         if args.output.resolve() == (ROOT.parent / 'results').resolve():
             raise ValueError('Smoke output must be a separate directory')

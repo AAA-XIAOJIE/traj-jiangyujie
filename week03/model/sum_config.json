@@ -1,0 +1,33 @@
+{
+  "epochs": 10,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "obs_length": 8,
+  "pred_length": 12,
+  "threads": 2,
+  "batch_size": 2,
+  "hidden_dim": 32,
+  "embedding_dim": 16,
+  "pool_dim": 32,
+  "latent_dim": 8,
+  "grid_n": 4,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "lr_step": 10,
+  "variants": {
+    "sum_pool": {
+      "cell_side": 1.0,
+      "mask_neighbours": false
+    }
+  },
+  "checkpoint_selection": "minimum history-only validation ADE within 10 epochs; earliest tie",
+  "example_selection": "Seed 42; fixed first scene and retrospectively selected largest ADE gain/loss, explicitly labelled",
+  "evaluation": "single mean rollout, all 64 agents, history only, primary pedestrian scored",
+  "data_protocol": "exact teacher 56/12/12 chronological scenes; step 2; stride 8; primary IDs 1,17,33,49",
+  "units": "metres following Week 02 cm-to-m conversion, cross-checked against the 10 m circle",
+  "fps_source": "25 fps from Xiao et al. 2018, arXiv:1808.01443; sampled rate 12.5 Hz",
+  "study_status": "Exploratory follow-up after seeing original test results; not an independent confirmatory test"
+}

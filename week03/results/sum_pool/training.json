@@ -1,0 +1,113 @@
+{
+  "config": {
+    "epochs": 10,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "obs_length": 8,
+    "pred_length": 12,
+    "threads": 2,
+    "batch_size": 2,
+    "hidden_dim": 32,
+    "embedding_dim": 16,
+    "pool_dim": 32,
+    "latent_dim": 8,
+    "grid_n": 4,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "lr_step": 10,
+    "variants": {
+      "sum_pool": {
+        "cell_side": 1.0,
+        "mask_neighbours": false
+      }
+    },
+    "checkpoint_selection": "minimum history-only validation ADE within 10 epochs; earliest tie",
+    "example_selection": "Seed 42; fixed first scene and retrospectively selected largest ADE gain/loss, explicitly labelled",
+    "evaluation": "single mean rollout, all 64 agents, history only, primary pedestrian scored",
+    "data_protocol": "exact teacher 56/12/12 chronological scenes; step 2; stride 8; primary IDs 1,17,33,49",
+    "units": "metres following Week 02 cm-to-m conversion, cross-checked against the 10 m circle",
+    "fps_source": "25 fps from Xiao et al. 2018, arXiv:1808.01443; sampled rate 12.5 Hz",
+    "study_status": "Exploratory follow-up after seeing original test results; not an independent confirmatory test"
+  },
+  "runs": [
+    {
+      "variant": "sum_pool",
+      "seed": 42,
+      "selected_epoch": 6,
+      "best_val_ADE": 0.5306887030601501,
+      "elapsed_seconds": 56.6509998,
+      "parameters": 25633,
+      "initial_state_sha256": "90e41d078ab2cac756b42b2f50c18c0ba4e2f283ca5abd1ec43ff94101b234fa",
+      "checkpoint_sha256": "1fb3fed19c72186ab2e6ac51ffa2c8b6d9f4cbac417f35895154b1c57e504e6a",
+      "epoch_order_sha256": [
+        "315257e243728ac440b3bea0f44ccbd93bd5a3fbcdc0d8eaf9812bfaa06e2b35",
+        "eac17ace850828c0b65fb723adbc2170e6044ab167c21fac5ddca4d5d8fdb654",
+        "e76d1b1ee2c4765e82b4e5d282e4a7d1dba14e3bc17cda501d0b57a5ab8740d6",
+        "7f1f28799a35d6c4cd5563e532c7637f58d3e8ba2dd15e16e19e9a24c7fc9e47",
+        "8e69c8862dfa6525d06632414f164afd3b1c00b7a32f72ad10d13f9b552d6bd7",
+        "a282c807cf45f10588d352180406b2304755025c5eed100631187cf5002a76e6",
+        "e406354351fdd078b205da51ddc171de55e0350218b58af6d2e24d7fc85fc147",
+        "87645a5bdb49e0b310c9d42333470b93b1916d3a6732ba24cc7ed3aa5c995a4e",
+        "cf49e2eae5c212d120251718f799bacd8bfa512e0a7581ce7f88dc9f0c25c1c2",
+        "0df5609a14171a51505e13ae6b2ce0d1ff6cb9b8baefa233637259d4935d098d"
+      ],
+      "config_sha256": "11ebc9f1b94d933269da1e362fc5e2edf1ea3249563af3edc84ca80a00b098da"
+    },
+    {
+      "variant": "sum_pool",
+      "seed": 43,
+      "selected_epoch": 7,
+      "best_val_ADE": 0.5093161463737488,
+      "elapsed_seconds": 37.7108709,
+      "parameters": 25633,
+      "initial_state_sha256": "eb6bdbf549008ee037b94ed5745e77b62b48f3c9f966089f10103558bafd48c6",
+      "checkpoint_sha256": "54c3a8e72ee535b8233c3a67b46844a24cc3a51963cf5e8ac15f9edf093b68fc",
+      "epoch_order_sha256": [
+        "47eaa578b58c86d425d6c689d7d83e383d6642d377832a0536d8f76f1af4dce3",
+        "7d6be291f4a0e9568e1323e91cb8edfdce8699a37b0450706fc8c2ca811ec0ad",
+        "8ceec49c2f130000420fe011f400eceaa6f00db9f0b18e262ea3624cb6086d08",
+        "d8879b659ec48518febd73840810f503660d6ce13bcc9d70c0cf90eb0972269b",
+        "245feac2036d9bee419528f72e009c93a2dd3283a931ea17fb4c70607f0206d5",
+        "83eab5f1ef131841c32e8c9bccf6b7c2f9176c642ee333fa878007b44d7e5720",
+        "68420d09be307f38f24a6d34558f336bb80304892dd34a9b96cdf9948bfc6ccf",
+        "7e14837588e3bec94468e0e66a81a7fe3e6776524fcd11d5c6279154be26db80",
+        "769eaf348a7e3a470c21d1c7d3d821bd8799a2828bdc985fc764e8aa794f7b72",
+        "995e586b2d9b4ddd770f43f7dd3ae4021f40f22cf884419ad7b223a59bc59c54"
+      ],
+      "config_sha256": "11ebc9f1b94d933269da1e362fc5e2edf1ea3249563af3edc84ca80a00b098da"
+    },
+    {
+      "variant": "sum_pool",
+      "seed": 44,
+      "selected_epoch": 9,
+      "best_val_ADE": 0.4981602430343628,
+      "elapsed_seconds": 38.026655000000005,
+      "parameters": 25633,
+      "initial_state_sha256": "7c1979f816c9346acb87562235d2cbef61978c170c3a8f2e176f79dd72e15287",
+      "checkpoint_sha256": "85e5ff1a45cb98de7b73b1becefab1826e45d693d5ff641f0c43dd3e3a4a3b71",
+      "epoch_order_sha256": [
+        "3fabc47a71a0434f32428ff9456d5a6b4376406a2069a8583d5d6498368fd3ba",
+        "d345a277ee351bd437cf44ffccf6ad1ea6298823fa9f06e029d34b867515efff",
+        "64159a7268c2c7a26cd3997c0985174a8e65f6354c531604dbc959b4467f0522",
+        "f440b33506310c18d0c37520a2c3be9b8fe6a49a497309b83801eb559493fba5",
+        "86b054af879f1b4181864e3a806f7797dcb6cbab4f5adf563e5a8b8ae1d498e5",
+        "2a1c716ec35328e7c1c79457713c0d1c6d6975921267c3c30044237d7e5dd876",
+        "bcb62de988ee9a1b25211f5624f395cd6a5d11d8215655f2a7bdcdedba11486c",
+        "1fdf384467912f2a3161e42bc6bd464a3a01761ee6bf10cdc18eb88776debc05",
+        "7ec94e54dadc45ab456777fd77b7881bb1b5061264fdbc78a22d424874bf01e0",
+        "843df2e18131d4ec2ec1be8d5c353f3705de2d8966bcc2fd70b25c0405b31d1b"
+      ],
+      "config_sha256": "11ebc9f1b94d933269da1e362fc5e2edf1ea3249563af3edc84ca80a00b098da"
+    }
+  ],
+  "environment": {
+    "python": "3.9.23",
+    "torch": "2.5.1+cu121",
+    "numpy": "2.0.2",
+    "device": "cpu",
+    "threads": 2
+  }
+}

@@ -1,5 +1,7 @@
 # Week 03 · Social LSTM 中的邻居信息有用吗？
 
+**最新补充：** 已完成等权求和、方向加权求和两个新模型，共六种配置、18 组训练。[打开全部轨迹图集](results/gallery/README.md)：每个模型都有全部 12 个测试场景的实测／预测对照，另有三个时间窗口的全部 64 人对照。下方原始四组结果保持不变，追加结果见文末。
+
 **本次教学设置未显示邻居信息的稳定收益。** 基于教师代码包，对原始 4 m 网格、屏蔽邻居、缩小至 2 m、扩大至 8 m 四种配置分别训练。三个随机种子的平均测试 ADE 中，屏蔽邻居优于原始模型，但并非每个种子都改善；四种 LSTM 均明显弱于匀速外推。这是一次小样本机制对照，不是对 Social LSTM 方法普遍有效性的判断。
 
 ![训练、预测和邻居信息总览](results/overview.png)
@@ -76,3 +78,34 @@ python -m pytest -q tests/test_week03_model.py
 `model/` 放配置、修改代码、教师核心源码和固定数据；`results/` 放三张 PNG、12 份小型权重、预测 NPZ、逐轮/逐场景指标和审计记录。PDF/SVG 在本地导出，不重复放入 Git。未纳入教师包中无关的 GAN/VAE、其他数据集和宣传图片。
 
 源码引用、MIT 许可证、实际依赖变化和 AI 辅助范围见 [SOURCE.md](model/SOURCE.md)。使用 Codex（GPT-6）辅助阅读、实现、运行、检查、绘图及整理说明；报告数值全部来自本次实际训练。
+
+## 追加：同格求和与运动方向加权
+
+新增两组都重新训练三个种子、各 10 轮，与原始模型保持相同的初始参数、样本顺序、25,633 个参数和验证选轮规则。**这些规则是在查看首批测试结果后提出的探索，不是独立验证；没有根据新增测试结果继续调整权重。**
+
+1. **等权求和：** 用 `scatter_add` 累加同格邻居，替代覆盖赋值，使多个邻居都能获得梯度；范围外的零贡献不会清除有效格子。
+2. **方向加权求和：** 根据当前与上一点的位移估计朝向，令 `w = 0.25 + 0.75 max(0, cos(theta))`；theta 为自身朝向和邻居相对位置的夹角。正前方权重 1，侧后方权重 0.25。速度低于 0.1 m/s 时恢复等权，避免近静止时的朝向噪声。保留世界坐标下的 4 m 网格，不额外旋转网格，不新增网络参数；预测阶段只使用已有预测位置估计朝向。
+
+| 配置 | 测试 ADE（m） | 测试 FDE（m） |
+|---|---:|---:|
+| 原始覆盖池化 | 0.614 ± 0.058 | 1.205 ± 0.150 |
+| 等权求和 | 0.714 ± 0.031 | 1.375 ± 0.068 |
+| 方向加权求和 | 0.702 ± 0.048 | 1.310 ± 0.071 |
+
+方向权重相对等权求和使平均 ADE 降低约 1.7%，FDE 降低约 4.7%；ADE 有 2/3 个种子改善，FDE 三个种子均改善。但两种新增模型都没有超过原始覆盖池化，更没有超过匀速外推，因此不能把方向先验描述成已经有效解决预测问题。当前训练量、停步阶段差异、固定方向权重和未学习的邻居重要性仍限制效果。全部数值见 [六模型汇总](results/extended_summary.csv)、[方向对照逐种子变化](results/direction_effects.json)。
+
+[逐场景 ADE/FDE 变化热图](results/paired_scene_errors.png) 对原始四组及等权求和做配对比较；负值代表改进。[求和案例放大图](results/sum_pool_cases.png) 同时显示固定首个场景与事后选择的最低／最高误差变化，明确标注了选择规则，不用这些场景调参。
+
+**完整预测与实际轨迹：** [六个模型、全部 12 个场景](results/gallery/README.md) · [方向加权模型全部场景](results/gallery/directional_sum_all_scenes.png) · [全部 64 人全场对照](results/gallery/all_64_agents.png)。灰色是历史，深色是实际未来，橙色是预测未来；六张主要行人图使用相同的逐场景坐标范围。图集固定使用种子 42，三个种子的指标和权重均已保留。64 人图展示邻居的辅助预测，正式 ADE/FDE 仍只评价预先固定的四个主要行人。
+
+追加模型复核与图集重画：
+
+```bash
+python -X utf8 -m week03.model.run --config week03/model/sum_config.json --output week03/results/sum_pool --evaluate-only
+python -X utf8 -m week03.model.run --config week03/model/direction_config.json --output week03/results/directional_sum --evaluate-only
+python -X utf8 -m week03.model.details
+python -X utf8 -m week03.model.gallery
+python -m pytest -q tests/test_week03_model.py tests/test_week03_sum.py tests/test_week03_direction.py
+```
+
+重新训练时去掉 `--evaluate-only`，并将输出分别设为 `.local/sum_retrain`、`.local/direction_retrain`。新增检查覆盖同格累加及梯度、顺序不变性、前后方向权重、静止回退、初始权重和样本顺序匹配，以及权重重载和实际 ADE/FDE。

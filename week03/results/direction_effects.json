@@ -1,0 +1,17 @@
+[
+  {
+    "seed": 42,
+    "ADE_direction_minus_sum": -0.03754669427871704,
+    "FDE_direction_minus_sum": -0.046779513359069824
+  },
+  {
+    "seed": 43,
+    "ADE_direction_minus_sum": -0.027768492698669434,
+    "FDE_direction_minus_sum": -0.07719993591308594
+  },
+  {
+    "seed": 44,
+    "ADE_direction_minus_sum": 0.029756247997283936,
+    "FDE_direction_minus_sum": -0.07189548015594505
+  }
+]

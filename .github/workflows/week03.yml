@@ -17,4 +17,4 @@ jobs:
           cache-dependency-path: week03/requirements.txt
       - run: python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
       - run: python -m pip install -r week03/requirements.txt pytest==8.4.2
-      - run: python -m pytest -q tests/test_week03_model.py
+      - run: python -m pytest -q tests/test_week03_model.py tests/test_week03_sum.py tests/test_week03_direction.py

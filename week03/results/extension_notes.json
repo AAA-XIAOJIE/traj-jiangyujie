@@ -1,0 +1,24 @@
+{
+  "status": "exploratory follow-up",
+  "cases": [
+    {
+      "scene_id": 68,
+      "seed": 42,
+      "selection": "First scene (fixed)",
+      "ADE_delta": 0.05871516466140747
+    },
+    {
+      "scene_id": 72,
+      "seed": 42,
+      "selection": "Lowest ADE change (retrospective)",
+      "ADE_delta": 0.00569307804107666
+    },
+    {
+      "scene_id": 74,
+      "seed": 42,
+      "selection": "Highest ADE change (retrospective)",
+      "ADE_delta": 0.1950882375240326
+    }
+  ],
+  "sum_seed_ADE_improved": 0
+}

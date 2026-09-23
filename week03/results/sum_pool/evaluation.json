@@ -1,0 +1,21 @@
+{
+  "config_sha256": "11ebc9f1b94d933269da1e362fc5e2edf1ea3249563af3edc84ca80a00b098da",
+  "protocol": "single mean rollout, all 64 agents, history only, primary pedestrian scored",
+  "wall_seconds_this_invocation": 136.59621719999998,
+  "test_scene_ids": [
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79
+  ],
+  "selection_frozen_before_test": true,
+  "seed_count": 3
+}

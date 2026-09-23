@@ -12,7 +12,7 @@
 
 ![第三周 Social LSTM 邻居信息对照](week03/results/overview.png)
 
-**本周交付：** [报告与结论](week03/README.md) · [预测对比图](week03/results/trajectory_comparison.png) · [ADE/FDE](week03/results/summary.csv) · [模型代码](week03/model)
+**本周交付：** [报告与结论](week03/README.md) · [六模型全部轨迹图集](week03/results/gallery/README.md) · [64 人实测与预测](week03/results/gallery/all_64_agents.png) · [完整 ADE/FDE](week03/results/extended_summary.csv) · [模型代码](week03/model)
 
 ## 第 1 周复现
 

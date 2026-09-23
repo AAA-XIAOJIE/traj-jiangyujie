@@ -1,0 +1,9 @@
+{
+  "selection": "lowest mean validation ADE across fixed seeds",
+  "mean_ADE": {
+    "directional_sum": 0.5389121373494467
+  },
+  "selected_variant": "directional_sum",
+  "config_sha256": "fae35baa86fd51b183f32fb3725b9d9b3e7784fd7b2b44305b7f32a65c39cd7d",
+  "test_used_for_selection": false
+}
