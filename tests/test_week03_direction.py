@@ -25,10 +25,10 @@ def test_heading_front_back_and_stationary_fallback():
 def test_direction_followup_record_and_causal_reload():
     from week03.model.experiment import make_model,predict,score
     import csv
-    out=ROOT.parent/'results/directional_sum'
+    out=ROOT.parent/'results/runs/directional_sum'
     if not (out/'metrics.csv').exists():pytest.skip('Training pending')
     config=json.loads((ROOT/'direction_config.json').read_text(encoding='utf8'))
-    main=json.loads((ROOT.parent/'results/training.json').read_text(encoding='utf8'))
+    main=json.loads((ROOT.parent/'results/runs/baseline/training.json').read_text(encoding='utf8'))
     extra=json.loads((out/'training.json').read_text(encoding='utf8'))
     assert len(extra['runs'])==3
     for r in extra['runs']:

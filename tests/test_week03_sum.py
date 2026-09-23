@@ -44,10 +44,10 @@ def test_sum_neighbour_permutation_and_matching_architecture():
 
 
 def test_extension_matches_original_initializations_and_orders():
-    output=ROOT.parent/'results/sum_pool'
+    output=ROOT.parent/'results/runs/sum_pool'
     if not (output/'metrics.csv').exists():
         pytest.skip('Extension training not finished')
-    original=json.loads((ROOT.parent/'results/training.json').read_text(encoding='utf-8'))
+    original=json.loads((ROOT.parent/'results/runs/baseline/training.json').read_text(encoding='utf-8'))
     extra=json.loads((output/'training.json').read_text(encoding='utf-8'))
     assert len(extra['runs'])==3
     for run in extra['runs']:

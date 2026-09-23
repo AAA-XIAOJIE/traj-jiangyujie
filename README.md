@@ -2,7 +2,7 @@
 
 姜昱杰的课程作业，按 `week01`–`week08` 组织。
 
-- [第 3 周：Social LSTM 邻居信息对照](week03/README.md)：教师代码、三种修改、独立训练、ADE/FDE 和同场景预测图。
+- [第 3 周：Social LSTM 邻居信息对照](week03/README.md)：六种模型、18 组训练、方向池化、ADE/FDE 与完整轨迹图集。
 - [第 2 周：圆环对跖点实验与 ORCA 行为模型](week02/README.md)：真实轨迹、机制、从初始状态出发的仿真、对照与失败分析。
 - [第 1 周：ETH/UCY 五场景轨迹图](week01/README.md)。
 
@@ -10,9 +10,9 @@
 
 第三周使用独立的 PyTorch 环境和 [week03/requirements.txt](week03/requirements.txt)。从根目录运行 `python -X utf8 -m week03.model.run --evaluate-only` 复核已训练权重，再用 `python -X utf8 -m week03.model.plots` 绘图。重新训练时运行 `python -X utf8 -m week03.model.run --output .local/week03_retrain`，保留已提交的结果。
 
-![第三周 Social LSTM 邻居信息对照](week03/results/overview.png)
+![第三周 Social LSTM 邻居信息对照](week03/results/gallery/directional_sum_all_scenes.png)
 
-**本周交付：** [报告与结论](week03/README.md) · [六模型全部轨迹图集](week03/results/gallery/README.md) · [64 人实测与预测](week03/results/gallery/all_64_agents.png) · [完整 ADE/FDE](week03/results/extended_summary.csv) · [模型代码](week03/model)
+**本周交付：** [报告与结论](week03/README.md) · [六模型全部轨迹图集](week03/results/gallery/README.md) · [64 人实测与预测](week03/results/gallery/all_64_agents.png) · [完整 ADE/FDE](week03/results/tables/extended_summary.csv) · [模型代码](week03/model)
 
 ## 第 1 周复现
 

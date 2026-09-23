@@ -18,3 +18,6 @@ week03/results/*.svg
 dist/
 build/
 .local/
+
+week03/results/**/*.pdf
+week03/results/**/*.svg

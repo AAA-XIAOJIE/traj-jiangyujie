@@ -10,13 +10,12 @@ from .plots import save_figure, COLORS, LABELS
 
 def main():
     out=ROOT.parent/'results'
-    main_rows=pd.read_csv(out/'per_scene.csv')
-    more=pd.read_csv(out/'sum_pool/per_scene.csv')
+    main_rows=pd.read_csv(out/'runs/baseline/per_scene.csv')
+    more=pd.read_csv(out/'runs/sum_pool/per_scene.csv')
     rows=pd.concat([main_rows,more[more.variant=='sum_pool']],ignore_index=True)
-    means=pd.concat([pd.read_csv(out/'metrics.csv'),pd.read_csv(out/'sum_pool/metrics.csv').query("variant=='sum_pool'")])
+    means=pd.concat([pd.read_csv(out/'runs/baseline/metrics.csv'),pd.read_csv(out/'runs/sum_pool/metrics.csv').query("variant=='sum_pool'")])
     sums=means.groupby(['split','variant'])[['ADE','FDE']].agg(['mean','std']).fillna(0)
     sums.columns=['_'.join(c) for c in sums.columns]
-    sums.reset_index().to_csv(out/'extended_summary.csv',index=False)
     test=rows[(rows.split=='test')&(rows.seed>=0)]
     base=test[test.variant=='social'].set_index(['scene_id','seed'])
     variants=['no_neighbours','small_grid','large_grid','sum_pool']
@@ -31,7 +30,7 @@ def main():
                            'ADE_delta':r.ADE-base.loc[(sid,seed)].ADE,
                            'FDE_delta':r.FDE-base.loc[(sid,seed)].FDE})
     paired=pd.DataFrame(paired)
-    paired.to_csv(out/'paired_differences.csv',index=False)
+    paired.to_csv(out/'tables/paired_differences.csv',index=False)
     scene_ids=sorted(test.scene_id.unique())
     style.apply()
     fig,axes=plt.subplots(1,3,figsize=(14,6.8),gridspec_kw={'width_ratios':[1,1,1.15]})
@@ -63,8 +62,8 @@ def main():
     for i,ax in enumerate(axes):style.panel_label(ax,chr(97+i),x=-.2,y=1.04)
     fig.text(.07,.097,'Heatmap cells average the 3 training seeds. White separators identify the three overlapping test windows; rows are not independent experiments.',fontsize=9,color='#637078')
     fig.text(.07,.052,'The original four models remain frozen. Sum pooling was proposed after viewing those test results; these extra comparisons are descriptive, not confirmatory.',fontsize=9,color='#637078')
-    save_figure(fig,out/'paired_scene_errors')
-    old=np.load(out/'predictions.npz'); new=np.load(out/'sum_pool/predictions.npz')
+    save_figure(fig,out/'figures/paired_scene_errors')
+    old=np.load(out/'runs/baseline/predictions.npz'); new=np.load(out/'runs/sum_pool/predictions.npz')
     seed_rows=paired[(paired.variant=='sum_pool')&(paired.seed==42)].set_index('scene_id')
     selected=[int(old['test_scene_ids'][0]),int(seed_rows.ADE_delta.idxmin()),int(seed_rows.ADE_delta.idxmax())]
     titles=['First scene (fixed)','Lowest ADE change (retrospective)','Highest ADE change (retrospective)']
@@ -87,9 +86,9 @@ def main():
         cases.append({'scene_id':sid,'seed':42,'selection':title,'ADE_delta':delta})
     handles,legend=axes[0].get_legend_handles_labels();fig.legend(handles,legend,loc='lower center',ncol=5,bbox_to_anchor=(.52,.1),fontsize=9)
     fig.text(.07,.045,'Equal x/y scale within each panel; panel extents differ. A lower error in a selected example does not establish a general improvement.',fontsize=9,color='#637078')
-    save_figure(fig,out/'sum_pool_cases')
+    save_figure(fig,out/'figures/sum_pool_cases')
     notes={'status':'exploratory follow-up','cases':cases,'sum_seed_ADE_improved':int((means.query("split=='test' and variant=='sum_pool'").set_index('seed').ADE-means.query("split=='test' and variant=='social'").set_index('seed').ADE<0).sum())}
-    (out/'extension_notes.json').write_text(json.dumps(notes,indent=2),encoding='utf-8')
+    (out/'audit/extension_notes.json').write_text(json.dumps(notes,indent=2),encoding='utf-8')
     print(sums.reset_index().to_string(index=False));print(json.dumps(notes))
 
 

@@ -68,9 +68,12 @@ def draw_path(ax, saved, scene_index, variants, title):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--results', type=Path, default=ROOT.parent/'results')
+    parser.add_argument('--results', type=Path, default=ROOT.parent/'results/runs/baseline')
     args = parser.parse_args()
     out = args.results
+    report = ROOT.parent/'results' if out.resolve() == (ROOT.parent/'results/runs/baseline').resolve() else out
+    figures, tables, audit_dir = (report/name for name in ['figures', 'tables', 'audit'])
+    for directory in (figures, tables, audit_dir): directory.mkdir(parents=True, exist_ok=True)
     metrics = pd.read_csv(out/'metrics.csv')
     curves = pd.read_csv(out/'learning_curves.csv')
     per = pd.read_csv(out/'per_scene.csv')
@@ -79,7 +82,7 @@ def main():
     style.apply()
     plt.rcParams.update({'font.size':9,'axes.titlesize':10})
     audit, example = neighbour_audit()
-    audit.to_csv(out/'neighbour_audit.csv', index=False)
+    audit.to_csv(tables/'neighbour_audit.csv', index=False)
     diagnostics = []
     for split in ['train','val','test']:
         scenes = load_scenes(split)
@@ -87,13 +90,13 @@ def main():
         diagnostics.append({'split':split,'scenes':len(scenes),'time_windows':len(scenes)//4,
                             'mean_primary_step_speed_m_s':float(np.mean(speeds)),
                             'definition':'mean over primary tracks and all 19 intervals per 20-point window; descriptive only'})
-    pd.DataFrame(diagnostics).to_csv(out/'split_diagnostics.csv',index=False)
+    pd.DataFrame(diagnostics).to_csv(tables/'split_diagnostics.csv',index=False)
     grouped = metrics.groupby(['split','variant'], sort=False)[['ADE','FDE']].agg(['mean','std']).fillna(0)
     summary = []
     for (split, variant), r in grouped.iterrows():
         summary.append({'split':split,'variant':variant,'ADE_mean':r[('ADE','mean')],
                         'ADE_sd':r[('ADE','std')],'FDE_mean':r[('FDE','mean')],'FDE_sd':r[('FDE','std')]})
-    pd.DataFrame(summary).to_csv(out/'summary.csv', index=False)
+    pd.DataFrame(summary).to_csv(tables/'summary.csv', index=False)
     fig, axes = plt.subplots(2,3,figsize=(13.4,8.4))
     fig.subplots_adjust(left=.07,right=.98,bottom=.13,top=.86,wspace=.32,hspace=.52)
     fig.suptitle('Does neighbour information help Social LSTM?',x=.07,ha='left',y=.98,fontsize=19,fontweight='bold',color='#152A3A')
@@ -137,7 +140,7 @@ def main():
     for i,ax in enumerate(axes.flat):style.panel_label(ax,chr(97+i),x=-.13,y=1.055)
     fig.text(.07,.052,'Bars: mean across 3 training seeds; error bars/shading: sample SD, not confidence intervals. CV is deterministic. All models score identical test scenes.',fontsize=8,color='#637078')
     fig.text(.07,.028,'Single circle experiment; overlapping windows and the same participants across time splits. A 12-step forecast spans 0.96 s; this is a classroom comparison.',fontsize=8,color='#637078')
-    save_figure(fig,out/'overview')
+    save_figure(fig,figures/'overview')
     # All four people in the first test window; chosen in advance, not by error.
     fig,axes=plt.subplots(2,2,figsize=(11.5,9))
     fig.subplots_adjust(left=.08,right=.97,top=.88,bottom=.13,wspace=.27,hspace=.30)
@@ -151,7 +154,7 @@ def main():
     handles,labels=axes[0,0].get_legend_handles_labels()
     fig.legend(handles,labels,loc='lower center',ncol=4,fontsize=8,bbox_to_anchor=(.52,.048))
     fig.text(.08,.023,'Each panel has equal x/y scale. Panel extents differ. No true future of any neighbour is supplied to the forecasting model.',fontsize=8,color='#637078')
-    save_figure(fig,out/'trajectory_comparison')
+    save_figure(fig,figures/'trajectory_comparison')
     # Explain what the actual grid observes, using a training scene only.
     count,sid,relative=example
     fig,axes=plt.subplots(1,3,figsize=(12.5,4.9),sharex=True,sharey=True)
@@ -172,7 +175,7 @@ def main():
     axes[0].set_ylabel('Relative y (m)')
     fig.text(.07,.085,'Social grid: relative positions determine cells; compressed neighbour hidden states fill cells; the embedded grid enters the LSTM.',fontsize=8,color='#637078')
     fig.text(.07,.043,'Zero-neighbour experiment supplies an all-zero grid before embedding. Teacher code uses indexed assignment for shared cells, not sum pooling.',fontsize=8,color='#637078')
-    save_figure(fig,out/'neighbour_information')
+    save_figure(fig,figures/'neighbour_information')
     # Summary includes paired seed effects, never a significance claim.
     test=metrics[(metrics.split=='test')&(metrics.variant!='constant_velocity')]
     effects=[]
@@ -183,7 +186,7 @@ def main():
                         'ADE_improved_seeds':int((other.ADE<base.ADE).sum()),
                         'FDE_delta_mean':float((other.FDE-base.FDE).mean()),
                         'FDE_improved_seeds':int((other.FDE<base.FDE).sum())})
-    (out/'figure_notes.json').write_text(json.dumps({'trajectory_scenes':saved['test_scene_ids'][:4].tolist(),
+    (audit_dir/'figure_notes.json').write_text(json.dumps({'trajectory_scenes':saved['test_scene_ids'][:4].tolist(),
         'trajectory_seed':42,'trajectory_selection':'first test window, all four primary people, predeclared',
         'grid_example_train_scene':sid,'paired_effects':effects},indent=2),encoding='utf-8')
     print(pd.DataFrame(summary).to_string(index=False))

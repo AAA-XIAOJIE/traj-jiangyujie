@@ -103,7 +103,7 @@ def test_metrics_primary_only_in_physical_distance():
 
 def test_saved_evidence_matches_predictions_and_validation_selection(config):
     import csv
-    out = ROOT.parent / 'results'
+    out = ROOT.parent / 'results/runs/baseline'
     if not (out / 'metrics.csv').exists():
         pytest.skip('Full training has not finished yet')
     rows = list(csv.DictReader((out/'metrics.csv').open(encoding='utf-8')))
