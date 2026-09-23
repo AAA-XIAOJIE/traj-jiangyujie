@@ -21,3 +21,11 @@ build/
 
 week03/results/**/*.pdf
 week03/results/**/*.svg
+
+# Optional Week 03 legacy views; final report uses the full six-model gallery.
+week03/results/figures/overview.png
+week03/results/figures/trajectory_comparison.png
+week03/results/figures/sum_pool_cases.png
+week03/results/tables/summary.csv
+week03/results/audit/figure_notes.json
+week03/results/audit/extension_notes.json

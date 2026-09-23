@@ -36,12 +36,12 @@ python -m pip install -r week03/requirements.txt
 python -X utf8 -m week03.model.run --evaluate-only
 python -X utf8 -m week03.model.run --config week03/model/sum_config.json --output week03/results/runs/sum_pool --evaluate-only
 python -X utf8 -m week03.model.run --config week03/model/direction_config.json --output week03/results/runs/directional_sum --evaluate-only
-python -X utf8 -m week03.model.plots
-python -X utf8 -m week03.model.details
 python -X utf8 -m week03.model.gallery
 ```
 
-`plots` 输出第一阶段的总览、轨迹对照和网格示意；`details` 输出包含等权求和的配对热图和案例；`gallery` 输出六模型完整图集及统一汇总表。图集固定种子 42，不按测试误差挑选场景。案例图中两幅极值场景是事后选择，已在图内注明。
+`gallery` 输出六模型完整图集及统一汇总表，固定种子 42，不按测试误差挑选场景。
+
+可选诊断：[邻域网格](../results/figures/neighbour_information.png) · [原始四组与等权求和的配对热图](../results/figures/paired_scene_errors.png)。可分别用 `python -X utf8 -m week03.model.plots` 和 `python -X utf8 -m week03.model.details` 重画；它们生成的旧版总览、局部案例和重复汇总仅供本地查看，不加入 Git。
 
 ## 从头训练
 
