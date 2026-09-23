@@ -1,0 +1,23 @@
+{
+  "teacher_archive_sha256": "824d89fba881944582ecb3960d591e13e4969abe730420d0ef1aee413e1795ef",
+  "upstream_commit": "99a6e9d8675face1aeeb17227b73dd3d1267f463",
+  "upstream_url": "https://github.com/vita-epfl/trajnetplusplusbaselines",
+  "unchanged_teacher_source_sha256": {
+    "augmentation.py": "d36863fdcfa11e93de97b3b441b1931f9cb3b9ab54120a46727556393a2bdcdf",
+    "lstm/__init__.py": "7a86a62ad274aeb57cad26c9ae2a849b00ca15484eebcb203d7b7ac1621b0d73",
+    "lstm/lstm.py": "64dada246893e30750afa7c1a49cd0664db626ff711a7158683c393329508042",
+    "lstm/modules.py": "0d99a9a2cb0c1f272f71fc9bff28f2439250f39da61c2cff1f23fd36dc809993",
+    "lstm/gridbased_pooling.py": "fa26bad010b941804b29f03741a31b4e2c3d9629072d16d1ae81f60a01de099d",
+    "lstm/non_gridbased_pooling.py": "500cd3360bf5ee0bf8bf6a3557134a30f25572c3c6b2ae135afa829fc8e75392",
+    "lstm/loss.py": "f312320aa0896508733d5bb1c144097b19ee0e9701ccdedec4e3745af2667489",
+    "lstm/trainer.py": "f22c8dedfc20e8b313c13574a67d167e997f0a426485a1a14dc6dcecff5a31e8",
+    "lstm/utils.py": "d6dcae78cb33e7a7f2a78e40ed0f7489dd521c7f91b861a880d8ab3f5cf56c68",
+    "lstm/data_load_utils.py": "1a601727f4dae4ee6755889584e53b243660216d21307a2479567318f1a231d9"
+  },
+  "data_sha256": {
+    "train": "deeb6cc570e9203ffe42513dc10bab59cbcb49257d9491bbd55d5f008e30abfa",
+    "val": "eb86dcef1dab431c372c9371aa2c4f6d77a7cf6feb7f76583435be0d578daf07",
+    "test": "932e4987ef42a1064cc4573fa0187ce56a3116ba7fa66896433815f7e9d122ce"
+  },
+  "raw_matches_week02": true
+}

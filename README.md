@@ -2,16 +2,19 @@
 
 姜昱杰的课程作业，按 `week01`–`week08` 组织。
 
+- [第 3 周：Social LSTM 邻居信息对照](week03/README.md)：教师代码、三种修改、独立训练、ADE/FDE 和同场景预测图。
 - [第 2 周：圆环对跖点实验与 ORCA 行为模型](week02/README.md)：真实轨迹、机制、从初始状态出发的仿真、对照与失败分析。
 - [第 1 周：ETH/UCY 五场景轨迹图](week01/README.md)。
 
 第二周复现：安装下方依赖后运行 `python -X utf8 -m week02.model.run`，输入数据已包含在课程包中。
 
-![五场景轨迹总览](week01/figures/eth_ucy_trajectory_overview.png)
+第三周使用独立的 PyTorch 环境和 [week03/requirements.txt](week03/requirements.txt)。从根目录运行 `python -X utf8 -m week03.model.run --evaluate-only` 复核已训练权重，再用 `python -X utf8 -m week03.model.plots` 绘图。重新训练时运行 `python -X utf8 -m week03.model.run --output .local/week03_retrain`，保留已提交的结果。
 
-**本周交付：** [五张场景图与总览图](week01/figures) · [一段结论](week01/conclusion.md) · [场景统计](week01/results/scene_summary.csv) · [代码](week01)
+![第三周 Social LSTM 邻居信息对照](week03/results/overview.png)
 
-## 运行
+**本周交付：** [报告与结论](week03/README.md) · [预测对比图](week03/results/trajectory_comparison.png) · [ADE/FDE](week03/results/summary.csv) · [模型代码](week03/model)
+
+## 第 1 周复现
 
 已验证 Python 3.12。在仓库根目录安装依赖并运行：
 
@@ -26,9 +29,10 @@ python -X utf8 run.py --download
 
 ## 文件
 
-- `run.py`：唯一运行入口，下载、核验、绘图、导出统计。
+- `run.py`：第 1 周入口，下载、核验、绘图、导出统计。
 - `week01/`：四个模块（数据、轨迹、绘图、样式）、图件、结论和场景统计。
-- `week02/`–`week08/`：保留后续周次的作业目录。
+- `week02/`：圆环实验与 ORCA 仿真；`week03/`：Social LSTM 训练与邻居信息对照。
+- `week04/`–`week08/`：保留后续周次的作业目录。
 - `configs/week01.json`：场景、帧率、断线阈值和分辨率。
 - `data/manifest.json`：固定下载地址、文件大小和 SHA-256。
 - `tests/`：坐标顺序、个体隔离、时间断线及校验测试；GitHub 自动运行。

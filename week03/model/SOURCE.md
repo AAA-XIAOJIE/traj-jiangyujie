@@ -1,0 +1,19 @@
+# 代码与数据来源
+
+直接依据教师提供的 `Week3-TrajNet++-学生课堂包.zip`，没有用其他重写版替代。压缩包及保留文件的 SHA-256 在 [source_manifest.json](source_manifest.json)。课堂包注明的上游为 [EPFL VITA TrajNet++ baselines](https://github.com/vita-epfl/trajnetplusplusbaselines/tree/99a6e9d8675face1aeeb17227b73dd3d1267f463)，提交 `99a6e9d8675face1aeeb17227b73dd3d1267f463`。代码为 MIT 授权，[原许可证](vendor/LICENSE) 随附。
+
+保留教师包实际使用的 LSTM、网格池化、概率损失、训练器与辅助模块，共 10 个原样文件。根包初始化只导入所需的 LSTM 和 augmentation，省去 GAN、VAE、经典模型、原仓库图片及其他数据集。模型原文件未改；`experiment.py` 通过子类实现网格置零，并以参数配置改变邻域。
+
+`run.py` 直接调用教师 `Trainer.train`，维持 Gaussian PredictionLoss、Adam、teacher forcing 和训练期 6 m 远邻筛选。公共实验管理变化为：固定三个种子、记录相同初始化与样本顺序；每轮使用全 64 人历史递推计算验证 ADE，选择最佳轮次；保存纯 state_dict，避免分发任意对象 pickle。教师原来的内部验证 loss 不用作 ADE/FDE。评价不调用训练器的远邻筛选，也不传入任何人的真实未来。
+
+教师包推荐 Python 3.9 / PyTorch 1.12.1；本机复用 Python 3.9.23 / PyTorch 2.5.1，在 CPU 两线程上运行，以避开限时任务中的大型环境下载。因此结果不保证逐数值复现教师验证记录。所有对照使用同一环境，实际依赖见 [requirements.txt](../requirements.txt)。
+
+实验入口按 LSTM 类构造相同的四个网络，目标输入关闭；未启用的目标嵌入采用类默认 16 维，教师 CLI 的该占位层默认为 64 维。此分支不进入本次前向计算，但会影响参数计数及随机初始化消耗，故不能把相同种子理解为与教师 CLI 完全相同的初始权重。四个本次对照之间则逐张量相同。场景按 ID 排序后由相同种子逐轮打乱，选轮规则统一使用历史递推的验证 ADE。
+
+教师包中的三份 NDJSON 原样复制；`teacher_audit.json` 亦原样保留供追溯。原始 TXT 与上一周逐字节相同，仓库复用 `week02/model/data/circle-10m-64-1.txt`，不重复分发。教师审计中的单位和帧率仍标注待确认；本项目沿用第二周已确认的实验出处 [Xiao 等（2018）](https://arxiv.org/html/1808.01443v1)：25 fps、名义 10 m 圆环，并以实际初始圈半径核对厘米到米的转换。这里未擅改教师采样与划分。
+
+数据属于课程提供方的实验数据；MIT 适用于代码，不额外赋予数据再分发许可。格式和来源记录不替代数据授权。
+
+方法参考：[Alahi 等，Social LSTM，CVPR 2016](https://openaccess.thecvf.com/content_cvpr_2016/html/Alahi_Social_LSTM_Human_CVPR_2016_paper.html)。该论文用邻域中其他行人的隐藏状态建立交互表示。本次保留的是教师包的 TrajNet++ 实现：压缩隐藏维度，按空间格子索引赋值，不能把同格多人处理称为原始论文中的标准求和池化。
+
+使用 Codex（GPT-6）辅助源码阅读、消融实现、执行实验、测试、绘图与文字整理。所有数值来自本地实际训练与预测；初始状态、种子、权重、指标及图件均可由提交脚本核查。

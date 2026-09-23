@@ -8,3 +8,9 @@
 *.pdf binary
 *.svg text eol=lf
 week02/model/data/*.txt -text
+# Preserve the teacher source byte-for-byte, including its existing whitespace.
+week03/model/vendor/** -text -whitespace
+week03/model/data/*/*.ndjson -text
+week03/model/data/teacher_audit.json -text -whitespace
+*.pt binary
+*.npz binary

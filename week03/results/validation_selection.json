@@ -1,0 +1,12 @@
+{
+  "selection": "lowest mean validation ADE across fixed seeds",
+  "mean_ADE": {
+    "social": 0.4943203628063202,
+    "no_neighbours": 0.44102304180463153,
+    "small_grid": 0.5312532385190328,
+    "large_grid": 0.483531375726064
+  },
+  "selected_variant": "no_neighbours",
+  "config_sha256": "82d3b6cf26699615755b221298119fe939f69c8a0c16db595c9f7efeb48e9ccd",
+  "test_used_for_selection": false
+}

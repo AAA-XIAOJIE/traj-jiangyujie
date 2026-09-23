@@ -1,0 +1,34 @@
+{
+  "trajectory_scenes": [
+    68,
+    69,
+    70,
+    71
+  ],
+  "trajectory_seed": 42,
+  "trajectory_selection": "first test window, all four primary people, predeclared",
+  "grid_example_train_scene": 41,
+  "paired_effects": [
+    {
+      "variant": "no_neighbours",
+      "ADE_delta_mean": -0.05944333473841349,
+      "ADE_improved_seeds": 2,
+      "FDE_delta_mean": -0.08644747734069824,
+      "FDE_improved_seeds": 2
+    },
+    {
+      "variant": "small_grid",
+      "ADE_delta_mean": 0.07797449827194214,
+      "ADE_improved_seeds": 0,
+      "FDE_delta_mean": 0.11664688587188714,
+      "FDE_improved_seeds": 0
+    },
+    {
+      "variant": "large_grid",
+      "ADE_delta_mean": 0.06116122007369995,
+      "ADE_improved_seeds": 1,
+      "FDE_delta_mean": 0.09407420953114827,
+      "FDE_improved_seeds": 1
+    }
+  ]
+}

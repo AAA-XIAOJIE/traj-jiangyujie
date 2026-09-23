@@ -1,0 +1,13 @@
+# Tested Python 3.9; CPU execution, PyTorch upgraded from teacher's 1.12.1.
+# Install a CPU wheel with: pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1
+numpy==2.0.2
+scipy==1.13.1
+matplotlib==3.9.4
+pandas==2.3.3
+trajnetplusplustools==0.3.0
+pykalman==0.10.2
+scikit-base==0.12.6
+joblib==1.1.0
+pysparkling==0.6.2
+python-json-logger==2.0.7
