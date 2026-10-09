@@ -1,0 +1,40 @@
+{
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "matplotlib": "3.11.1",
+    "reportlab": "5.0.1",
+    "pypdf": "6.19.0"
+  },
+  "input_sha256": "246b75cbed1b00cf5ef6a31e2d025202c5517687ed8f4852561582e1b2fb7f6c",
+  "config_sha256": "58c546f6be406055d9c0e74e1950a85871261cfe4199029bf7f8d6f0cf0265bb",
+  "source_code_sha256": {
+    "model/analysis.py": "fba475d1b3acb8b443b41b1e6a69248ced10b506548852c2024cb7e89bd2e5e3",
+    "model/figures.py": "1993c59961757c572070b0ade8cac2010fbfeb1e296269f5a280a3910ee8b689",
+    "model/measures.py": "9446312e59d4e8b216bc104fdfe82df4948c429200ac8805850999e0f58cd264",
+    "model/prepare.py": "0fa91e3adec84a8412895b6286f4fc270fe5f107519879cadccaa2d056688c5b",
+    "model/report.py": "e99b329ab6a36baef890b17149af870e1ca4f3b767bcd4a5598b33af7fdba63b",
+    "model/run.py": "20b43c719d14889f9955639be3deae2b6224c944fcd5c7b416d8e08579ec3a8c"
+  },
+  "diagnostic_example_start_s": 160.0,
+  "selection": "largest absolute detector-Edie flow difference, after calculation, not used for ROI selection",
+  "runtime_seconds": 7.24,
+  "output_sha256": {
+    "audit.json": "dd16a75c8c5aef01fb6d211cd541a599dcc3be56755def510aa36ec366ba76b6",
+    "detector_crossings.csv": "f38cef3db5d1db49ab8d2e45f40eaa4d6e14b663f070f77763a592ddb34ad7e7",
+    "diagnostics.png": "fbe598d7425a060b7cb066a74d0ebeec71e671e2eb0262d2539634c4b333c175",
+    "fundamental_points.csv": "aadc64a1c7eee4b9438a4602a280b26d5214f6738dd41cdad493e99a0ef3e2d8",
+    "kernel_sensitivity.csv": "d94ae34df902df5a465e1349df0224fe675218d09eea5b33cc43df8263efbc3a",
+    "method_schematic.png": "5e0224cfdfdb758fc2e5fa32fb0c9fda18839ee3fed0a1c26456dc756b2389b7",
+    "methods.png": "285df82c8ca31134bd9c377fa5a5047df1b71d2ee92948b3897bcfaf8800e635",
+    "offset_sensitivity.csv": "3e06fb8afa28a42e0f7f86009804c604a7eff74485448c80e0139117158caf10",
+    "one_page.pdf": "0881e9d14db58874e7da0a070fe1fd926badb97331035eb8b937ae73cebd7887",
+    "quality.png": "ba0bc5e892e75318679110a1aa7cc5f031ecc2e07d7a5b21add9b4959da8abe8",
+    "sensitivity.png": "ea32e1f04d04f544386a2423872fbb50e1ea5d21a0fa79b165c65f467b3ab521",
+    "spatial_sensitivity.csv": "2eb1b7cbdb33dd4e61775319340a3a7b80447733ed50b3b3d59e7652fe83edae",
+    "speed_definition_check.csv": "331631947f5a682e227ef2a9c5e951d13317a01050747541a51a91c6bd883b66",
+    "speed_relations.png": "12a6e6236996c8abf711ba95cc02c886b6ed0ef631cfbf7652da8f8b5c8d884d",
+    "summary.csv": "80dd78c29c4b33e64ce2bdf847a24c01c4c635f6dcca7230abfbd480dff62317"
+  }
+}

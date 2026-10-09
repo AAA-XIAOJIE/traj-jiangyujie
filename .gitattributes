@@ -14,3 +14,5 @@ week03/model/data/*/*.ndjson -text
 week03/model/data/teacher_audit.json -text -whitespace
 *.pt binary
 *.npz binary
+*.gz binary
+week04/data/teacher_source.json -text -whitespace

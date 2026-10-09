@@ -1,7 +1,8 @@
-# traj-jiangyujie · 行人轨迹课程
+# traj-jiangyujie · 轨迹与交通流课程
 
 姜昱杰的课程作业，按 `week01`–`week08` 组织。
 
+- [第 4 周：NGSIM 交通流基本图](week04/README.md)：四种计算方法、时间与空间敏感性、一页结果报告。
 - [第 3 周：Social LSTM 邻居信息对照](week03/README.md)：六种模型、18 组训练、方向池化、ADE/FDE 与完整轨迹图集。
 - [第 2 周：圆环对跖点实验与 ORCA 行为模型](week02/README.md)：真实轨迹、机制、从初始状态出发的仿真、对照与失败分析。
 - [第 1 周：ETH/UCY 五场景轨迹图](week01/README.md)。
@@ -10,9 +11,11 @@
 
 第三周使用独立的 PyTorch 环境和 [week03/requirements.txt](week03/requirements.txt)。从根目录运行 `python -X utf8 -m week03.model.run --evaluate-only` 复核已训练权重，再用 `python -X utf8 -m week03.model.plots` 绘图。重新训练时运行 `python -X utf8 -m week03.model.run --output .local/week03_retrain`，保留已提交的结果。
 
-![第三周 Social LSTM 邻居信息对照](week03/results/gallery/directional_sum_all_scenes.png)
+![第四周：四种测量方法的交通流基本图](week04/results/methods.png)
 
-**本周交付：** [报告与结论](week03/README.md) · [六模型全部轨迹图集](week03/results/gallery/README.md) · [64 人实测与预测](week03/results/gallery/all_64_agents.png) · [完整 ADE/FDE](week03/results/tables/extended_summary.csv) · [模型代码](week03/model)
+**本周交付：** [方法与绘制心得](week04/README.md) · [一页结果 PDF](week04/results/one_page.pdf) · [敏感性图](week04/results/sensitivity.png) · [全部散点数值](week04/results/fundamental_points.csv) · [代码](week04/model)
+
+第四周复现：`python -m pip install -r week04/requirements.txt`，然后运行 `python -X utf8 -m week04.model.run`。随附已核验的 SI 子集，可离线计算。
 
 ## 第 1 周复现
 
@@ -32,7 +35,8 @@ python -X utf8 run.py --download
 - `run.py`：第 1 周入口，下载、核验、绘图、导出统计。
 - `week01/`：四个模块（数据、轨迹、绘图、样式）、图件、结论和场景统计。
 - `week02/`：圆环实验与 ORCA 仿真；`week03/`：Social LSTM 训练与邻居信息对照。
-- `week04/`–`week08/`：保留后续周次的作业目录。
+- `week04/`：NGSIM 四种基本图计算、尺度敏感性与一页报告。
+- `week05/`–`week08/`：保留后续周次的作业目录。
 - `configs/week01.json`：场景、帧率、断线阈值和分辨率。
 - `data/manifest.json`：固定下载地址、文件大小和 SHA-256。
 - `tests/`：坐标顺序、个体隔离、时间断线及校验测试；GitHub 自动运行。

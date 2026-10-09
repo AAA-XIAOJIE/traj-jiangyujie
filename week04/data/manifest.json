@@ -1,0 +1,49 @@
+{
+  "zip_sha256": "b27d34b88d6d281f8f8c40fe2c56061e368bc9a29f5970bb273e108b4a30089d",
+  "raw_rows": 1226650,
+  "raw_vehicles": 2052,
+  "missing": {
+    "vehicle_id": 0,
+    "frame_id": 0,
+    "time_s": 0,
+    "global_time_ms": 0,
+    "local_x_m": 0,
+    "local_y_m": 0,
+    "vehicle_length_m": 0,
+    "vehicle_class": 0,
+    "speed_m_s": 0,
+    "acceleration_m_s2": 0,
+    "lane_id": 0
+  },
+  "duplicates": 0,
+  "lane": 2,
+  "x_range_m": [
+    150,
+    250
+  ],
+  "support_rows": 282136,
+  "support_vehicles": 440,
+  "source_csv": "NGSIM_I80_20050413_1600-1615_SI.csv",
+  "source_csv_sha256": "df86a98e490daba1bf6a2ff3a1ca2e346be1cf2bdaf66a037910b74f40695255",
+  "subset_file": "lane2_support.csv.gz",
+  "subset_sha256": "246b75cbed1b00cf5ef6a31e2d025202c5517687ed8f4852561582e1b2fb7f6c",
+  "subset_rule": "all six retained SI columns, all times and lanes, for every vehicle ever observed in lane 2; no smoothing",
+  "actual_time_domain_s": [
+    0,
+    899.9
+  ],
+  "time_step_s": 0.1,
+  "actual_global_time_ms": [
+    1113433200000,
+    1113434099900
+  ],
+  "metadata_note": "teacher global_time_ms[0]=1000000000 disagrees with all CSV timestamps and the query; the CSV timestamps and time_s are used",
+  "workspace_reuse": {
+    "full_vs_clipped_cell": "voronoi_density.py compute_frame_density/process_file, adapted to one-dimensional point cells for a single lane",
+    "plots": "week01/style.py; workbench plot_fundamental_diagrams.py layout conventions, not its unweighted per-person aggregation"
+  },
+  "workbench_source_sha256": {
+    "voronoi_density.py": "707dafdc0e58cd0f89157f38b53e2ebfde79b7443a979514dfd0c1ba699d082a",
+    "plot_fundamental_diagrams.py": "7e2bd8671ebb49825f381136a8a253cd1cc2c76d902da1598b3a27779c05619a"
+  }
+}

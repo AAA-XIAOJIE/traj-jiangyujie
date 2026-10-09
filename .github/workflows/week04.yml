@@ -1,0 +1,36 @@
+name: week04-fundamental-diagrams
+on:
+  push:
+    paths:
+      - 'week04/**'
+      - 'tests/test_week04*'
+      - 'week01/style.py'
+      - 'requirements.txt'
+      - '.github/workflows/week04.yml'
+  pull_request:
+    paths:
+      - 'week04/**'
+      - 'tests/test_week04*'
+      - 'week01/style.py'
+      - 'requirements.txt'
+      - '.github/workflows/week04.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            week04/requirements.txt
+      - run: python -m pip install -r week04/requirements.txt pytest==9.1.1
+      - run: python -X utf8 -m week04.model.run --output .local/week04_ci
+      - run: python -m pytest -q tests/test_week04_measures.py tests/test_week04_results.py
+        env:
+          WEEK04_RESULTS: .local/week04_ci

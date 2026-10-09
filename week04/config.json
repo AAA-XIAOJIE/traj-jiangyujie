@@ -1,0 +1,35 @@
+{
+  "lane": 2,
+  "x_min_m": 150.0,
+  "x_max_m": 250.0,
+  "time_start_s": 0.0,
+  "time_end_s": 840.0,
+  "sample_step_s": 0.1,
+  "main_window_s": 30.0,
+  "windows_s": [
+    10.0,
+    30.0,
+    60.0
+  ],
+  "subcell_lengths_m": [
+    10.0,
+    25.0,
+    50.0,
+    100.0
+  ],
+  "detector_x_m": 200.0,
+  "kernel_halfwidth_m": 25.0,
+  "kernel_halfwidths_m": [
+    10.0,
+    25.0,
+    50.0
+  ],
+  "quadrature_substeps": 2,
+  "trend_bandwidth_veh_km": 20.0,
+  "trend_min_points": 4,
+  "lane_change_time": "midpoint between the two labelled observations",
+  "position_reference": "NGSIM local_y_m, vehicle front-centre; no length shift",
+  "speed_definition": "longitudinal piecewise-linear position derivative for all four methods",
+  "smoothing": "none on input trajectories; kernel is a measurement operator",
+  "direction": "I-80 eastbound, increasing local_y_m"
+}

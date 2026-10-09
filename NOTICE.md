@@ -1,5 +1,7 @@
 # 来源与授权说明
 
+第四周使用教师提供的 NGSIM I-80 SI 数据包，原始来源为 [USDOT NGSIM](https://data.transportation.gov/d/8ect-6jqj)。仓库随附可复算的第 2 车道支持子集，保留源文件和子集 SHA-256、原教师元数据、筛选规则以及已发现的元数据不一致说明。课程数据来源及原有权利范围不因本次提交而改变。本周独立实现 Edie、断面、一维 Voronoi 与核测量，引用、工作台复用和 AI 辅助范围见 [week04/README.md](week04/README.md)。
+
 第三周基于教师提供的 TrajNet++ 课堂包，保留 EPFL VITA LSTM 代码的 MIT 许可证及逐文件哈希。网格信息屏蔽和邻域范围对照为课程改动；来源、依赖变化和 AI 辅助说明见 [week03/model/SOURCE.md](week03/model/SOURCE.md)。第三周的 NDJSON 是同一课程圆环 TXT 的既有转换，数据权利范围沿用原提供方约定。
 
 第二周 `week02/model/orca.py` 改编自 UNC 的 RVO2 `Agent.cc`（提交 `1c25b27258d191e26c2df83ff6e31abc8efbdaed`），按 Apache-2.0 使用，版权标识保留在源码，许可证见 [RVO2-LICENSE](week02/model/RVO2-LICENSE.txt)。改动包括 Python/NumPy 移植、全体邻居约束及可行性诊断。个体侧偏偏好和评估流程为本课程的扩展，不是原始 ORCA 自带行为规则。

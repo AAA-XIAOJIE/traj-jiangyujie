@@ -1,0 +1,164 @@
+{
+  "input": {
+    "zip_sha256": "b27d34b88d6d281f8f8c40fe2c56061e368bc9a29f5970bb273e108b4a30089d",
+    "raw_rows": 1226650,
+    "raw_vehicles": 2052,
+    "missing": {
+      "vehicle_id": 0,
+      "frame_id": 0,
+      "time_s": 0,
+      "global_time_ms": 0,
+      "local_x_m": 0,
+      "local_y_m": 0,
+      "vehicle_length_m": 0,
+      "vehicle_class": 0,
+      "speed_m_s": 0,
+      "acceleration_m_s2": 0,
+      "lane_id": 0
+    },
+    "duplicates": 0,
+    "lane": 2,
+    "x_range_m": [
+      150,
+      250
+    ],
+    "support_rows": 282136,
+    "support_vehicles": 440,
+    "source_csv": "NGSIM_I80_20050413_1600-1615_SI.csv",
+    "source_csv_sha256": "df86a98e490daba1bf6a2ff3a1ca2e346be1cf2bdaf66a037910b74f40695255",
+    "subset_file": "lane2_support.csv.gz",
+    "subset_sha256": "246b75cbed1b00cf5ef6a31e2d025202c5517687ed8f4852561582e1b2fb7f6c",
+    "subset_rule": "all six retained SI columns, all times and lanes, for every vehicle ever observed in lane 2; no smoothing",
+    "actual_time_domain_s": [
+      0,
+      899.9
+    ],
+    "time_step_s": 0.1,
+    "actual_global_time_ms": [
+      1113433200000,
+      1113434099900
+    ],
+    "metadata_note": "teacher global_time_ms[0]=1000000000 disagrees with all CSV timestamps and the query; the CSV timestamps and time_s are used",
+    "workspace_reuse": {
+      "full_vs_clipped_cell": "voronoi_density.py compute_frame_density/process_file, adapted to one-dimensional point cells for a single lane",
+      "plots": "week01/style.py; workbench plot_fundamental_diagrams.py layout conventions, not its unweighted per-person aggregation"
+    },
+    "workbench_source_sha256": {
+      "voronoi_density.py": "707dafdc0e58cd0f89157f38b53e2ebfde79b7443a979514dfd0c1ba699d082a",
+      "plot_fundamental_diagrams.py": "7e2bd8671ebb49825f381136a8a253cd1cc2c76d902da1598b3a27779c05619a"
+    }
+  },
+  "analysis_config": {
+    "lane": 2,
+    "x_min_m": 150.0,
+    "x_max_m": 250.0,
+    "time_start_s": 0.0,
+    "time_end_s": 840.0,
+    "sample_step_s": 0.1,
+    "main_window_s": 30.0,
+    "windows_s": [
+      10.0,
+      30.0,
+      60.0
+    ],
+    "subcell_lengths_m": [
+      10.0,
+      25.0,
+      50.0,
+      100.0
+    ],
+    "detector_x_m": 200.0,
+    "kernel_halfwidth_m": 25.0,
+    "kernel_halfwidths_m": [
+      10.0,
+      25.0,
+      50.0
+    ],
+    "quadrature_substeps": 2,
+    "trend_bandwidth_veh_km": 20.0,
+    "trend_min_points": 4,
+    "lane_change_time": "midpoint between the two labelled observations",
+    "position_reference": "NGSIM local_y_m, vehicle front-centre; no length shift",
+    "speed_definition": "longitudinal piecewise-linear position derivative for all four methods",
+    "smoothing": "none on input trajectories; kernel is a measurement operator",
+    "direction": "I-80 eastbound, increasing local_y_m"
+  },
+  "subset_missing": 0,
+  "subset_duplicate_keys": 0,
+  "long_gaps": 0,
+  "lane_transitions_in_support": 265,
+  "roi_unique_vehicles": 339,
+  "roi_vehicle_seconds": 4888.212816148761,
+  "roi_vehicle_metres": 32274.83754100001,
+  "roi_speed_derivative_max_m_s": 45.372619999989666,
+  "roi_intervals_above_40_m_s": 3,
+  "roi_anomaly_vehicle_ids": [
+    1732,
+    2800
+  ],
+  "anomaly_policy": "retained, no silent filtering or smoothing; counts and IDs in this audit, velocity comparison in quality.png",
+  "geometric_vs_reported_speed_mae_m_s": 0.10720091531185041,
+  "voronoi_time_samples": 17998,
+  "voronoi_invalid_time_samples": 326,
+  "voronoi_invalid_in_analysis": 0,
+  "quadrature_convergence": [
+    {
+      "method": "voronoi",
+      "max_k_difference": 8.202549265945436e-05,
+      "max_q_difference": 0.0041619414932938525
+    },
+    {
+      "method": "kernel",
+      "max_k_difference": 4.252024497475304e-05,
+      "max_q_difference": 0.0021479797039773985
+    }
+  ],
+  "spatial_additivity": [
+    {
+      "cell_length_m": 10.0,
+      "metric": "vehicle_seconds",
+      "max_abs_error": 0.0
+    },
+    {
+      "cell_length_m": 10.0,
+      "metric": "vehicle_metres",
+      "max_abs_error": 5.684341886080802e-14
+    },
+    {
+      "cell_length_m": 25.0,
+      "metric": "vehicle_seconds",
+      "max_abs_error": 0.0
+    },
+    {
+      "cell_length_m": 25.0,
+      "metric": "vehicle_metres",
+      "max_abs_error": 1.1368683772161603e-13
+    },
+    {
+      "cell_length_m": 50.0,
+      "metric": "vehicle_seconds",
+      "max_abs_error": 1.4210854715202004e-14
+    },
+    {
+      "cell_length_m": 50.0,
+      "metric": "vehicle_metres",
+      "max_abs_error": 1.1368683772161603e-13
+    },
+    {
+      "cell_length_m": 100.0,
+      "metric": "vehicle_seconds",
+      "max_abs_error": 0.0
+    },
+    {
+      "cell_length_m": 100.0,
+      "metric": "vehicle_metres",
+      "max_abs_error": 0.0
+    }
+  ],
+  "time_mean_edie_k_range": 2.1316282072803006e-14,
+  "time_mean_edie_q_range": 2.2737367544323206e-13,
+  "full_observation_window_s": 899.9,
+  "common_support": "0 <= t < 840 s; all four methods valid; complete 10/30/60 s windows; source 883.6-899.9 s lacks Voronoi guards",
+  "unused_tail_s": 59.9,
+  "final_windows": "Primary comparison has no partial windows; offset sensitivity uses its recorded actual durations"
+}
