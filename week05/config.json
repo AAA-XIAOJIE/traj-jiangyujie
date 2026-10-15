@@ -1,0 +1,23 @@
+{
+  "models": ["OVM", "FVDM", "IDM"],
+  "calibration_end_s": 30.0,
+  "validation_duration_s": 30.0,
+  "main_step_s": 0.05,
+  "convergence_steps_s": [0.1, 0.05, 0.025],
+  "calibration_step_s": 0.1,
+  "calibration_seed": 20261015,
+  "braking_start_s": 5.0,
+  "braking_deceleration_m_s2": 1.5,
+  "braking_sensitivity_m_s2": [0.5, 1.0, 1.5, 2.0, 3.0, 5.0],
+  "position_loss_scale_m": 10.0,
+  "speed_loss_scale_m_s": 5.0,
+  "boundary_policy": "ballistic exact stop position, v>=0; every negative-speed request reported; no acceleration cap or minimum-gap correction",
+  "scope": "single lane, one leader and one follower, no lane changes",
+  "parameter_bounds": {
+    "OVM": {"alpha": [0.1, 2.0], "C2": [0.5, 2.5]},
+    "FVDM": {"alpha": [0.1, 2.0], "C2": [0.5, 2.5], "lambda": [0.0, 2.0]},
+    "IDM": {"T": [0.3, 3.0], "a": [0.2, 3.0], "b": [0.5, 4.0]}
+  },
+  "calibration_restarts": 8,
+  "calibration_rounds": 38
+}

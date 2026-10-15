@@ -1,0 +1,605 @@
+{
+  "parameters": {
+    "baseline": {
+      "OVM": {
+        "alpha": 0.41,
+        "V1": 6.75,
+        "V2": 7.91,
+        "C1": 0.13,
+        "C2": 1.57
+      },
+      "FVDM": {
+        "alpha": 0.41,
+        "V1": 6.75,
+        "V2": 7.91,
+        "C1": 0.13,
+        "C2": 1.57,
+        "lambda": 0.5,
+        "cutoff_m": 100.0
+      },
+      "IDM": {
+        "v0": 33.333333333333336,
+        "T": 1.6,
+        "a": 0.73,
+        "b": 1.67,
+        "s0": 2.0,
+        "s1": 0.0,
+        "delta": 4.0
+      }
+    },
+    "calibrated": {
+      "OVM": {
+        "alpha": 0.3689892010562503,
+        "V1": 6.75,
+        "V2": 7.91,
+        "C1": 0.13,
+        "C2": 1.4053172914072871
+      },
+      "FVDM": {
+        "alpha": 0.3308624897867905,
+        "V1": 6.75,
+        "V2": 7.91,
+        "C1": 0.13,
+        "C2": 1.398545200453084,
+        "lambda": 0.09971195153408298,
+        "cutoff_m": 100.0
+      },
+      "IDM": {
+        "v0": 33.333333333333336,
+        "T": 0.9966835722510962,
+        "a": 0.8392900136172486,
+        "b": 4.0,
+        "s0": 2.0,
+        "s1": 0.0,
+        "delta": 4.0
+      }
+    }
+  },
+  "fit": {
+    "OVM": {
+      "model": "OVM",
+      "calibrated_parameter_names": [
+        "alpha",
+        "C2"
+      ],
+      "bounds": {
+        "alpha": [
+          0.1,
+          2.0
+        ],
+        "C2": [
+          0.5,
+          2.5
+        ]
+      },
+      "objective": 0.032494857433309085,
+      "baseline_objective": 0.054642140817802096,
+      "evaluated_candidates": 1777,
+      "history": [
+        {
+          "iteration": 0,
+          "best_loss": 0.034066443238232116
+        },
+        {
+          "iteration": 1,
+          "best_loss": 0.034066443238232116
+        },
+        {
+          "iteration": 2,
+          "best_loss": 0.03313486106677759
+        },
+        {
+          "iteration": 3,
+          "best_loss": 0.03313486106677759
+        },
+        {
+          "iteration": 4,
+          "best_loss": 0.03256794899979293
+        },
+        {
+          "iteration": 5,
+          "best_loss": 0.03256794899979293
+        },
+        {
+          "iteration": 6,
+          "best_loss": 0.03256794899979293
+        },
+        {
+          "iteration": 7,
+          "best_loss": 0.03256794899979293
+        },
+        {
+          "iteration": 8,
+          "best_loss": 0.032554789864072085
+        },
+        {
+          "iteration": 9,
+          "best_loss": 0.03249943937090317
+        },
+        {
+          "iteration": 10,
+          "best_loss": 0.03249943937090317
+        },
+        {
+          "iteration": 11,
+          "best_loss": 0.03249943937090317
+        },
+        {
+          "iteration": 12,
+          "best_loss": 0.03249943937090317
+        },
+        {
+          "iteration": 13,
+          "best_loss": 0.03249943937090317
+        },
+        {
+          "iteration": 14,
+          "best_loss": 0.03249923106738634
+        },
+        {
+          "iteration": 15,
+          "best_loss": 0.03249750103186365
+        },
+        {
+          "iteration": 16,
+          "best_loss": 0.03249488388547725
+        },
+        {
+          "iteration": 17,
+          "best_loss": 0.03249488388547725
+        },
+        {
+          "iteration": 18,
+          "best_loss": 0.03249488388547725
+        },
+        {
+          "iteration": 19,
+          "best_loss": 0.03249488388547725
+        },
+        {
+          "iteration": 20,
+          "best_loss": 0.03249488388547725
+        },
+        {
+          "iteration": 21,
+          "best_loss": 0.03249488388547725
+        },
+        {
+          "iteration": 22,
+          "best_loss": 0.03249488388547725
+        },
+        {
+          "iteration": 23,
+          "best_loss": 0.03249488388547725
+        },
+        {
+          "iteration": 24,
+          "best_loss": 0.03249488053330467
+        },
+        {
+          "iteration": 25,
+          "best_loss": 0.03249488053330467
+        },
+        {
+          "iteration": 26,
+          "best_loss": 0.032494868396281684
+        },
+        {
+          "iteration": 27,
+          "best_loss": 0.032494868396281684
+        },
+        {
+          "iteration": 28,
+          "best_loss": 0.032494858952396344
+        },
+        {
+          "iteration": 29,
+          "best_loss": 0.032494858537972376
+        },
+        {
+          "iteration": 30,
+          "best_loss": 0.03249485807085983
+        },
+        {
+          "iteration": 31,
+          "best_loss": 0.03249485807085983
+        },
+        {
+          "iteration": 32,
+          "best_loss": 0.03249485781998843
+        },
+        {
+          "iteration": 33,
+          "best_loss": 0.03249485781998843
+        },
+        {
+          "iteration": 34,
+          "best_loss": 0.03249485744648015
+        },
+        {
+          "iteration": 35,
+          "best_loss": 0.03249485744648015
+        },
+        {
+          "iteration": 36,
+          "best_loss": 0.03249485744648015
+        },
+        {
+          "iteration": 37,
+          "best_loss": 0.032494857433309085
+        }
+      ],
+      "boundary_parameters": [],
+      "mask": "relative_time_s < 30; no validation follower targets accessed"
+    },
+    "FVDM": {
+      "model": "FVDM",
+      "calibrated_parameter_names": [
+        "alpha",
+        "C2",
+        "lambda"
+      ],
+      "bounds": {
+        "alpha": [
+          0.1,
+          2.0
+        ],
+        "C2": [
+          0.5,
+          2.5
+        ],
+        "lambda": [
+          0.0,
+          2.0
+        ]
+      },
+      "objective": 0.0307537229971304,
+      "baseline_objective": 0.07736737392489997,
+      "evaluated_candidates": 2385,
+      "history": [
+        {
+          "iteration": 0,
+          "best_loss": 0.03665978890970056
+        },
+        {
+          "iteration": 1,
+          "best_loss": 0.03301686558916129
+        },
+        {
+          "iteration": 2,
+          "best_loss": 0.03301686558916129
+        },
+        {
+          "iteration": 3,
+          "best_loss": 0.03253781027678598
+        },
+        {
+          "iteration": 4,
+          "best_loss": 0.031602509550358884
+        },
+        {
+          "iteration": 5,
+          "best_loss": 0.031366162401394254
+        },
+        {
+          "iteration": 6,
+          "best_loss": 0.031366162401394254
+        },
+        {
+          "iteration": 7,
+          "best_loss": 0.031235466518754192
+        },
+        {
+          "iteration": 8,
+          "best_loss": 0.031066704073201733
+        },
+        {
+          "iteration": 9,
+          "best_loss": 0.031066704073201733
+        },
+        {
+          "iteration": 10,
+          "best_loss": 0.031019350214217277
+        },
+        {
+          "iteration": 11,
+          "best_loss": 0.03094253132757076
+        },
+        {
+          "iteration": 12,
+          "best_loss": 0.030908186006782596
+        },
+        {
+          "iteration": 13,
+          "best_loss": 0.030835124907727305
+        },
+        {
+          "iteration": 14,
+          "best_loss": 0.03078168999551779
+        },
+        {
+          "iteration": 15,
+          "best_loss": 0.03078168999551779
+        },
+        {
+          "iteration": 16,
+          "best_loss": 0.03078168999551779
+        },
+        {
+          "iteration": 17,
+          "best_loss": 0.03076276501188756
+        },
+        {
+          "iteration": 18,
+          "best_loss": 0.0307611548224304
+        },
+        {
+          "iteration": 19,
+          "best_loss": 0.0307611548224304
+        },
+        {
+          "iteration": 20,
+          "best_loss": 0.030759323080684884
+        },
+        {
+          "iteration": 21,
+          "best_loss": 0.030755280987489624
+        },
+        {
+          "iteration": 22,
+          "best_loss": 0.03075472872669904
+        },
+        {
+          "iteration": 23,
+          "best_loss": 0.03075472872669904
+        },
+        {
+          "iteration": 24,
+          "best_loss": 0.030753871667814257
+        },
+        {
+          "iteration": 25,
+          "best_loss": 0.030753871667814257
+        },
+        {
+          "iteration": 26,
+          "best_loss": 0.030753871667814257
+        },
+        {
+          "iteration": 27,
+          "best_loss": 0.030753871667814257
+        },
+        {
+          "iteration": 28,
+          "best_loss": 0.030753860882052866
+        },
+        {
+          "iteration": 29,
+          "best_loss": 0.030753769132764005
+        },
+        {
+          "iteration": 30,
+          "best_loss": 0.030753769132764005
+        },
+        {
+          "iteration": 31,
+          "best_loss": 0.030753769132764005
+        },
+        {
+          "iteration": 32,
+          "best_loss": 0.030753733191690055
+        },
+        {
+          "iteration": 33,
+          "best_loss": 0.030753733191690055
+        },
+        {
+          "iteration": 34,
+          "best_loss": 0.030753733191690055
+        },
+        {
+          "iteration": 35,
+          "best_loss": 0.030753733191690055
+        },
+        {
+          "iteration": 36,
+          "best_loss": 0.030753728709135977
+        },
+        {
+          "iteration": 37,
+          "best_loss": 0.0307537229971304
+        }
+      ],
+      "boundary_parameters": [],
+      "mask": "relative_time_s < 30; no validation follower targets accessed"
+    },
+    "IDM": {
+      "model": "IDM",
+      "calibrated_parameter_names": [
+        "T",
+        "a",
+        "b"
+      ],
+      "bounds": {
+        "T": [
+          0.3,
+          3.0
+        ],
+        "a": [
+          0.2,
+          3.0
+        ],
+        "b": [
+          0.5,
+          4.0
+        ]
+      },
+      "objective": 0.026429497402548137,
+      "baseline_objective": 0.1726002106762167,
+      "evaluated_candidates": 2385,
+      "history": [
+        {
+          "iteration": 0,
+          "best_loss": 0.030327895082525168
+        },
+        {
+          "iteration": 1,
+          "best_loss": 0.028625627869983048
+        },
+        {
+          "iteration": 2,
+          "best_loss": 0.02776032897348537
+        },
+        {
+          "iteration": 3,
+          "best_loss": 0.02752633079130884
+        },
+        {
+          "iteration": 4,
+          "best_loss": 0.02752633079130884
+        },
+        {
+          "iteration": 5,
+          "best_loss": 0.02752633079130884
+        },
+        {
+          "iteration": 6,
+          "best_loss": 0.02679383300213114
+        },
+        {
+          "iteration": 7,
+          "best_loss": 0.02679383300213114
+        },
+        {
+          "iteration": 8,
+          "best_loss": 0.02679383300213114
+        },
+        {
+          "iteration": 9,
+          "best_loss": 0.026618005287007192
+        },
+        {
+          "iteration": 10,
+          "best_loss": 0.026580242060574705
+        },
+        {
+          "iteration": 11,
+          "best_loss": 0.02650318823187747
+        },
+        {
+          "iteration": 12,
+          "best_loss": 0.02650318823187747
+        },
+        {
+          "iteration": 13,
+          "best_loss": 0.026470529718216222
+        },
+        {
+          "iteration": 14,
+          "best_loss": 0.026470529718216222
+        },
+        {
+          "iteration": 15,
+          "best_loss": 0.026441493535640945
+        },
+        {
+          "iteration": 16,
+          "best_loss": 0.026441493535640945
+        },
+        {
+          "iteration": 17,
+          "best_loss": 0.026440546296677934
+        },
+        {
+          "iteration": 18,
+          "best_loss": 0.026433979523641002
+        },
+        {
+          "iteration": 19,
+          "best_loss": 0.026433979523641002
+        },
+        {
+          "iteration": 20,
+          "best_loss": 0.026432206451495053
+        },
+        {
+          "iteration": 21,
+          "best_loss": 0.026430373530734484
+        },
+        {
+          "iteration": 22,
+          "best_loss": 0.026430373530734484
+        },
+        {
+          "iteration": 23,
+          "best_loss": 0.026430373530734484
+        },
+        {
+          "iteration": 24,
+          "best_loss": 0.026429895868479148
+        },
+        {
+          "iteration": 25,
+          "best_loss": 0.026429895868479148
+        },
+        {
+          "iteration": 26,
+          "best_loss": 0.026429619870753505
+        },
+        {
+          "iteration": 27,
+          "best_loss": 0.026429619870753505
+        },
+        {
+          "iteration": 28,
+          "best_loss": 0.02642954021708571
+        },
+        {
+          "iteration": 29,
+          "best_loss": 0.026429513427437577
+        },
+        {
+          "iteration": 30,
+          "best_loss": 0.026429513427437577
+        },
+        {
+          "iteration": 31,
+          "best_loss": 0.026429505717299236
+        },
+        {
+          "iteration": 32,
+          "best_loss": 0.026429499744955648
+        },
+        {
+          "iteration": 33,
+          "best_loss": 0.026429499744955648
+        },
+        {
+          "iteration": 34,
+          "best_loss": 0.026429498327954826
+        },
+        {
+          "iteration": 35,
+          "best_loss": 0.026429498327954826
+        },
+        {
+          "iteration": 36,
+          "best_loss": 0.026429498327954826
+        },
+        {
+          "iteration": 37,
+          "best_loss": 0.026429497402548137
+        }
+      ],
+      "boundary_parameters": [
+        "b"
+      ],
+      "mask": "relative_time_s < 30; no validation follower targets accessed"
+    }
+  },
+  "training_samples": 300,
+  "validation_samples": 301,
+  "objective": "mean(((x_sim-x_observed)/10 m)^2+((v_sim-v_raw)/5 m/s)^2)",
+  "invalid_fit_policy": "collisions, nonfinite and raw negative-speed proposals receive loss 1e6",
+  "optimization": "deterministic 257 candidate initialization, eight multistarts, bounded coordinate pattern search; not a proof of a global optimum"
+}

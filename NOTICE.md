@@ -1,5 +1,7 @@
 # 来源与授权说明
 
+第五周根据 Bando 等（1995）、Jiang 等（2001）与 Treiber 等（2000）的原始论文独立实现 OVM、FVDM 和 IDM 公式，未复制第三方跟驰代码。完整书目信息、原文链接、SI 适配与数值边界说明见 [week05/README.md](week05/README.md)。使用第四周同源 NGSIM SI 数据，随附可核验的稳定跟驰对、原始来源哈希及候选筛选记录；原始论文 PDF 仅用于本地核对，仓库提供来源链接。制图复用既有 week01 样式，AI 辅助范围已说明。
+
 第四周使用教师提供的 NGSIM I-80 SI 数据包，原始来源为 [USDOT NGSIM](https://data.transportation.gov/d/8ect-6jqj)。仓库随附可复算的第 2 车道支持子集，保留源文件和子集 SHA-256、原教师元数据、筛选规则以及已发现的元数据不一致说明。课程数据来源及原有权利范围不因本次提交而改变。本周独立实现 Edie、断面、一维 Voronoi 与核测量，引用、工作台复用和 AI 辅助范围见 [week04/README.md](week04/README.md)。
 
 第三周基于教师提供的 TrajNet++ 课堂包，保留 EPFL VITA LSTM 代码的 MIT 许可证及逐文件哈希。网格信息屏蔽和邻域范围对照为课程改动；来源、依赖变化和 AI 辅助说明见 [week03/model/SOURCE.md](week03/model/SOURCE.md)。第三周的 NDJSON 是同一课程圆环 TXT 的既有转换，数据权利范围沿用原提供方约定。

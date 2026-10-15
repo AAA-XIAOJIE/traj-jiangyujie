@@ -1,0 +1,94 @@
+{
+  "source_rows": 1226650,
+  "source_vehicles": 2052,
+  "missing_by_column": {
+    "vehicle_id": 0,
+    "frame_id": 0,
+    "time_s": 0,
+    "global_time_ms": 0,
+    "local_x_m": 0,
+    "local_y_m": 0,
+    "vehicle_length_m": 0,
+    "vehicle_class": 0,
+    "speed_m_s": 0,
+    "acceleration_m_s2": 0,
+    "lane_id": 0
+  },
+  "duplicate_vehicle_frame_keys": 0,
+  "lane_2_rows": 233280,
+  "stable_leader_runs_total": 1007,
+  "eligible_runs": 5,
+  "exclusion_reason_counts": {
+    "duration_below_60s": 844,
+    "maximum_abs_raw_speed_increment_m_s2_above_threshold": 476,
+    "no_observed_leader": 379,
+    "position_vs_raw_speed_rmse_above_threshold": 325,
+    "not_two_passenger_cars": 32,
+    "net_gap_below_1m": 30,
+    "maximum_position_speed_m_s_above_threshold": 26
+  },
+  "selection_rule": {
+    "lane_id": 2,
+    "vehicle_class": 2,
+    "minimum_duration_s": 60.0,
+    "export_duration_s": 60.0,
+    "minimum_net_gap_m": 1.0,
+    "maximum_position_speed_m_s": 30.0,
+    "maximum_raw_speed_m_s": 30.0,
+    "maximum_abs_raw_speed_increment_m_s2": 8.0,
+    "maximum_position_vs_raw_speed_rmse_m_s": 0.25,
+    "sample_interval_s": 0.1,
+    "calibration_duration_s": 30.0,
+    "ranking": "eligible maximal stable-leader runs: duration descending, start time ascending, follower ID ascending; export first 60 seconds"
+  },
+  "selected_maximal_run": {
+    "run_id": 110,
+    "follower_id": 378,
+    "leader_id": 368.0,
+    "start_s": 50.9,
+    "end_s": 118.6,
+    "duration_s": 67.69999999999999,
+    "samples": 678,
+    "eligible": true,
+    "exclusion_reasons": "",
+    "min_net_gap_m": 4.728981000000008,
+    "max_net_gap_m": 14.104343000000004,
+    "minimum_position_speed_m_s": 1.9324300000000638,
+    "maximum_position_speed_m_s": 12.582169999998378,
+    "minimum_raw_speed_m_s": 1.97206,
+    "maximum_raw_speed_m_s": 12.496825,
+    "maximum_abs_raw_speed_increment_m_s2": 6.4617700000003655,
+    "position_vs_raw_speed_rmse_m_s": 0.13364121761144868
+  },
+  "source_csv": "NGSIM_I80_20050413_1600-1615_SI.csv",
+  "source_csv_sha256": "df86a98e490daba1bf6a2ff3a1ca2e346be1cf2bdaf66a037910b74f40695255",
+  "candidates_file": "candidates.csv",
+  "vehicle_lengths_m": {
+    "follower": 4.663449,
+    "leader": 3.017526,
+    "both_constant_in_selected_run": true
+  },
+  "export_speed_agreement": {
+    "definition": "RMSE of supplied speed minus central-position-derivative speed on the exported 601 points; one-sided second-order endpoint differences",
+    "follower_rmse_m_s": 0.04077629871951844,
+    "leader_rmse_m_s": 0.04145995355773312
+  },
+  "export": {
+    "start_s": 50.9,
+    "end_s": 110.9,
+    "calibration_interval_s": [
+      50.9,
+      80.9
+    ],
+    "validation_interval_s": [
+      80.9,
+      110.9
+    ],
+    "calibration_fit_mask": "relative_time_s < 30; boundary at 30 s is reserved for validation initialization",
+    "validation_samples": 301,
+    "calibration_samples": 300,
+    "rows": 601,
+    "minimum_net_gap_m": 4.728981000000008,
+    "maximum_net_gap_m": 13.668173999999997
+  }
+}

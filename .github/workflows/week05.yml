@@ -1,0 +1,36 @@
+name: week05-car-following
+on:
+  push:
+    paths:
+      - 'week05/**'
+      - 'tests/test_week05*'
+      - 'week01/style.py'
+      - 'requirements.txt'
+      - '.github/workflows/week05.yml'
+  pull_request:
+    paths:
+      - 'week05/**'
+      - 'tests/test_week05*'
+      - 'week01/style.py'
+      - 'requirements.txt'
+      - '.github/workflows/week05.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            week05/requirements.txt
+      - run: python -m pip install -r week05/requirements.txt pytest==9.1.1
+      - run: python -X utf8 -m week05.model.run --output .local/week05_ci
+      - run: python -m pytest -q tests/test_week05_models.py tests/test_week05_results.py
+        env:
+          WEEK05_RESULTS: .local/week05_ci

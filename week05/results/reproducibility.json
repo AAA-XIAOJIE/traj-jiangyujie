@@ -1,0 +1,40 @@
+{
+  "input_sha256": "2a23e787b87f8cf879ed6a2d9abe3fc9403306f77ff087b9fccdb79bce0e2643",
+  "config_sha256": "82f098bb46eaf5e655464f41eebdd8d2270aa83c6aa0938bb2cb7c7d5630a129",
+  "source_code_sha256": {
+    "model/analysis.py": "32e26a3734ebfd75f773f83fd0309b034a69f98c5d67d566a52214887964ffe9",
+    "model/calibration.py": "c6ecf16b23ab5aa65a0e3c78beae54880dd51f404a03b3b8dc680ff2d9de2bab",
+    "model/figures.py": "2f16ef753e8e7bc9fba79f5c25eadf53509cc95eeda0fe310f650e7e5f436b70",
+    "model/models.py": "c515d19c68ce7474d8b794ed53813dd1292ade9c685505333f726f7f80cbc749",
+    "model/prepare.py": "1b1730750dccb8089e370350e66958dabb6bf37cb378d85b98ff0e0221b9ad41",
+    "model/report.py": "9173df4347c098a922b3240814a59e56cd3d0498cb9cf23afa4ecdf9c54e6b8a",
+    "model/run.py": "e6d0db02ea93ca0343f2ed48a3b8767799be9a71ccb42a8983a150c3e760222d",
+    "model/simulation.py": "e6d4e64159a860ab481a11fba5a39ecbc59691589249e7bc2838083c3a21c006"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "matplotlib": "3.11.1",
+    "reportlab": "5.0.1",
+    "pypdf": "6.19.0"
+  },
+  "runtime_seconds": 4.43,
+  "output_sha256": {
+    "braking_sensitivity.csv": "b15bc7e905027566a6b9533f83e6ba321a3212e5ca796abeb31d3f194e30227a",
+    "calibration.json": "1c633bbfd91debba07d42715c1ed7f882a0665d031f81af4eca712ed74956432",
+    "convergence.csv": "80c76909318bf2bd9238d855fef368bba587732755df52ddab413528172359d6",
+    "data_protocol.png": "dbcb3f32088139802c272c86d2d48505d8c55253f3af8837e3c4eca79dcde56d",
+    "experiment.json": "a1db66433972b7f16c330b9bf900724c4eced5b8ddcdebcbb55d01a74fe2d84c",
+    "feedback_ablation.csv": "4f46c166ee1d625ad071cf21a189b98a88421976cadab365e9827c7a76c5133b",
+    "formula_checks.json": "46721ceb3749fb6a2b653d9f5859afd07dc0b8b461da9e361fa0c8189a3d1285",
+    "interventions.png": "3fcd136799a1a3701fb6dcc8bd34e0c2d216fac9f7379b5fcccc1366167757c0",
+    "mechanisms.png": "3de5d84848bb923c2d40b9c42dafe69c9475b7427a86a87144a3ca796cc787c2",
+    "metrics.csv": "f05c5f9731d31f5473517986e95597f6db21009f3fcec1f11d58a5b0c7ebc3d8",
+    "one_page.pdf": "57818e05463b3a8d2d332f14e6cc634245477bcae8078e016e6e6df90721d50f",
+    "overview.png": "566db4c6697a976e9058c4fcba4a32913cb935e8fd586c34c52817b2c1ca9976",
+    "real_replay.png": "d972261b6043c6ad557f8f9683a7b592c7cc3224fe1ed66834a496a93a570e98",
+    "robustness.png": "61d95f1170556553830895dd17994b7aa4abab004d40aa481cef7c9e0e1ae803",
+    "trajectories.csv": "f64ca335f304ed836b2fea28b6ac53fdfd19e81a1b7c2cd3c5c14363455f1c25"
+  }
+}
