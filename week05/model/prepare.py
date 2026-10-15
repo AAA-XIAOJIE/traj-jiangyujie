@@ -206,7 +206,7 @@ def prepare(source_zip: Path, output: Path, audit_output: Path) -> dict:
             {key: value.item() if isinstance(value, np.generic) else value for key, value in row.items()}
             for row in eligible.to_dict(orient="records")
         ],
-        "speed_field_note": "Source-supplied speeds and positions are independently measured fields. For a prescribed observed leader position curve, use that curve's piecewise derivative as the leader velocity in the dynamics; the raw speed remains a measurement target and diagnostic.",
+        "speed_field_note": "Source speeds and positions are separately supplied fields; this does not imply independent measurement processes. For a prescribed observed leader position curve, use that curve's piecewise derivative as the leader velocity in the dynamics; the raw speed remains a measurement target and diagnostic.",
         "source_audit": {key: audit[key] for key in ("source_rows", "source_vehicles", "missing_by_column", "duplicate_vehicle_frame_keys", "lane_2_rows", "stable_leader_runs_total", "eligible_runs", "exclusion_reason_counts")},
         "export_summary": audit["export"],
     }

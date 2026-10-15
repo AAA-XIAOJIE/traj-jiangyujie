@@ -165,7 +165,7 @@
       "position_vs_raw_speed_rmse_m_s": 0.13016349657533874
     }
   ],
-  "speed_field_note": "Source-supplied speeds and positions are independently measured fields. For a prescribed observed leader position curve, use that curve's piecewise derivative as the leader velocity in the dynamics; the raw speed remains a measurement target and diagnostic.",
+  "speed_field_note": "Source speeds and positions are separately supplied fields; this does not imply independent measurement processes. For a prescribed observed leader position curve, use that curve's piecewise derivative as the leader velocity in the dynamics; the raw speed remains a measurement target and diagnostic.",
   "source_audit": {
     "source_rows": 1226650,
     "source_vehicles": 2052,
