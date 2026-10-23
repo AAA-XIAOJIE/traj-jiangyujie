@@ -1,0 +1,4 @@
+-r ../requirements.txt
+reportlab==5.0.1
+pypdf==6.19.0
+Pillow==12.3.0

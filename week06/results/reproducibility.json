@@ -1,0 +1,33 @@
+{
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "matplotlib": "3.11.1",
+    "Pillow": "12.3.0",
+    "reportlab": "5.0.1",
+    "pypdf": "6.19.0"
+  },
+  "elapsed_seconds": 299.67,
+  "config_sha256": "caf3bad6d5f65b612ece52365b31b5d6c8f40ff85f14523bc805c370bbfabc41",
+  "output_sha256": {
+    "additional_studies.csv": "eb094b9a0839a06d6cc473c728be72621d65ce6be300dc35952e2a3b25bfffc5",
+    "circle_comparison.gif": "77953fb51ae534418c04d3fea79fa3050453a40de6c5dfab690bcc95155e77d1",
+    "circle_diagnostics.png": "0516097640a88fdc12b5cc95021fb4406c701b646732977cf735eafa2c7eec95",
+    "circle_series.csv": "dec8ca7ce0e92cd424d628f417ac0ba932414b8eb2eb2945b2e8739c5b7d9032",
+    "circle_trajectories.png": "61914d243cd9da75a807981c10be32e3882a9ce66815696cad5de465f75b3a22",
+    "experiment.json": "8f75317668da6cf3cf68fd83b7f3cb4913dc956a8825a9365fd45291346b7d55",
+    "failure_and_repair.png": "80ec95e519a932a241bfa84f8a8f250ff4afe0fbc87711761f0cb56868226071",
+    "initial_conditions.csv": "5437d6ffce90662bb49e0c770a509be694a00f7402649555d85c8c3dc3bd00bf",
+    "metrics.csv": "b32510a0813dddad4f281c438728d6b10da8e8eb4932a3fda837a72bd0499693",
+    "mixed_circle.png": "8cfcfed3c555aa605270da4c10a32ea5b70248df53e28fa52dad1141337aeda6",
+    "mixed_comparison.gif": "03ee69f39aa8034cec164e2448635af47ef61d3107cb5994ae7c179ad92c8033",
+    "mixed_diagnostics.png": "82b571d17284eda1efff8620073549f9d3b3a3547bb632d0705db731eed08cd5",
+    "narrow_comparison.gif": "bb4a9f579ebdb12e5aaf112bbb9a0a3b87c8b3b3673b8c68b1b6fc1203838978",
+    "narrow_metrics.png": "1378c0813f30ac1682c659b6a577d9b40da8d089b7589636e0cdbce84957f39c",
+    "narrow_trajectories.png": "e41f587642a8248bc7ea6598ed5b5dcdf7b88123d8d9a23c6c81d11ea76e8732",
+    "one_page.pdf": "b28a21562b9f1501942462d14870a326330f9c8249350d9e9c9159f61f5f7aee",
+    "robustness.png": "e6774622a82ebbecc22080cebd5c7ac8c94fed578cf6d69bbcfa93b4ac791017",
+    "trajectories.npz": "382dac2b25f8500f0f7673cc4fd9023049fb3e14eb153f1ddef52411e8edac66"
+  }
+}

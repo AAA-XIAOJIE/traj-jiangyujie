@@ -1,0 +1,179 @@
+{
+  "config": {
+    "seed": 42,
+    "models": [
+      "sfm",
+      "idm",
+      "orca"
+    ],
+    "variants": [
+      "base",
+      "guided"
+    ],
+    "dt_s": 0.04,
+    "mixed_circle": {
+      "agents": 64,
+      "radius_m": 30.0,
+      "duration_s": 80.0,
+      "car_length_m": 4.4,
+      "car_width_m": 1.8,
+      "wheelbase_m": 2.7,
+      "max_steer_angle_rad": 0.5235987756,
+      "max_yaw_rate_rad_s": 0.35,
+      "max_lateral_accel_m_s2": 2.0
+    },
+    "narrow": {
+      "widths_m": [
+        4.2,
+        3.2,
+        2.9,
+        2.6
+      ],
+      "duration_s": 40.0,
+      "road_length_m": 32.0,
+      "pedestrian_radius_m": 0.25,
+      "car_length_m": 4.4,
+      "car_width_m": 1.8,
+      "pedestrian_speed_m_s": 1.4,
+      "car_speed_m_s": 3.0,
+      "pedestrian_positions_m": [
+        [
+          4.0,
+          -0.35
+        ],
+        [
+          4.0,
+          0.35
+        ],
+        [
+          6.0,
+          -0.35
+        ],
+        [
+          6.0,
+          0.35
+        ],
+        [
+          8.0,
+          -0.35
+        ],
+        [
+          8.0,
+          0.35
+        ]
+      ],
+      "car_position_m": [
+        28.0,
+        0.0
+      ]
+    },
+    "sfm": {
+      "A_m_s2": 4.0,
+      "B_m": 0.5,
+      "wall_A_m_s2": 4.0,
+      "wall_B_m": 0.15
+    },
+    "idm": {
+      "s0_m": 0.15,
+      "T_s": 0.6,
+      "delta": 4.0,
+      "lateral_buffer_m": 0.03
+    },
+    "orca": {
+      "horizon_s": 2.0
+    },
+    "guidance": {
+      "anticipation_s": 4.0,
+      "side_bias_rad": 0.35,
+      "right_probability": 0.65,
+      "wall_margin_m": 0.02,
+      "passing_margin_m": 0.08
+    },
+    "dynamics": {
+      "pedestrian_tau_s": 0.5,
+      "car_tau_s": 1.0,
+      "pedestrian_accel_m_s2": 3.0,
+      "car_accel_m_s2": 1.5,
+      "car_brake_m_s2": 4.0,
+      "max_speed_factor": 1.2
+    },
+    "prediction_before_running": [
+      "At 4.2 m there is geometric space for both sides; lack of lateral planning may still cause deadlock.",
+      "At 3.2 m geometric passing remains possible, but smaller clearance may increase delay and model failures.",
+      "At 2.9 m only 0.05 m spare width per occupied side is available: clearance and rule sensitivity are expected.",
+      "At 2.6 m a centered 1.8 m car leaves 0.4 m per side, less than a 0.5 m pedestrian: waiting is physically appropriate without reversing or moving the car laterally."
+    ]
+  },
+  "observed": {
+    "people": 64,
+    "duration_s": 16.96,
+    "mean_path_m": 22.324204046769655,
+    "median_detour_ratio": 1.0885585032361047,
+    "mean_speed_mps": 1.3041386715717647,
+    "min_mean_radius_m": 3.5377198812857356,
+    "time_min_mean_radius_s": 5.32,
+    "right_fraction": 0.59375,
+    "left_fraction": 0.28125,
+    "right_fraction_zero_threshold": 0.65625,
+    "neutral_fraction": 0.125,
+    "median_max_lateral_m": 2.1492860557584104,
+    "approach_speed_mps": 2.2553799217202766,
+    "closest_approach_speed_mps": 1.8151140127619834,
+    "slower_at_closest_fraction": 0.765625,
+    "mean_heading_deviation_deg": 16.12530496882604,
+    "arrived_by_end": 64,
+    "median_arrival_s_completed_only": 12.76,
+    "min_swept_center_distance_m": 0.1560270009453492,
+    "disk_overlap_pair_intervals": 1154,
+    "disk_overlap_unique_pairs": 96,
+    "ade_after_calibration_m": 0.0,
+    "fde_m": 0.0
+  },
+  "source_sha256": "05d52540e3a4f427f52627cc4aaf9c7d1dde7228ca5513995284d0f52f14d790",
+  "source_file": "week02/model/data/circle-10m-64-1.txt",
+  "circle_initialization": {
+    "fps": 25.0,
+    "coordinate_scale_to_m": 0.01,
+    "initial_velocity_window_s": 0.2,
+    "calibration_end_s": 2.0,
+    "body_radius_m": 0.25,
+    "time_horizon_s": 2.0,
+    "anticipation_s": 4.0,
+    "start_response_s": 0.5,
+    "max_speed_factor": 1.2,
+    "goal_tolerance_m": 0.5,
+    "right_bias_candidates_rad": [
+      0.3,
+      0.5,
+      0.7
+    ],
+    "selected_right_bias_rad": 0.3,
+    "side_seed": 42,
+    "right_preference_probability": 0.65,
+    "source_assumptions": {
+      "fps": "25 fps from Xiao et al. (2018), arXiv:1808.01443, Section 2",
+      "units": "centimeters inferred from initial fitted radius about 1007 source units versus 10 m design",
+      "columns": "ID, frame, x, y, height; fifth field 160/170/180 is unused",
+      "goals": "2 * fitted_initial_circle_center - initial_position; no final coordinates used"
+    }
+  },
+  "dependency_sha256": {
+    "week02/model/analysis.py": "e457e1bcecb3bdf10495a3d7f3c0649043e497134e4cdc99c99463ff7cce7556",
+    "week02/model/orca.py": "0470ada9d608b0515d99ecb835a1f0e0e95dd33c90517d740446052bf4070b43",
+    "week02/model/config.json": "284a7abf05c5427f1431fd08f4ec2892d61e0a464716106ca94c208afeed715b",
+    "week01/style.py": "0135048397e59d9e91f98bcc030ee7499b92bbbbfbfd48288ca147efc9825783"
+  },
+  "geometric_minimum_road_width_m": 2.8,
+  "numerical_semantics": "Synchronous x_next=x+dt*v_next. Swept geometry assumes this piecewise-linear segment. Overlap simulations continue diagnostically; arrived counts after overlap are not safe throughput.",
+  "source_code_sha256": {
+    "figures.py": "bbdcd3aded3e02936465ea743f9c48deccec909c6edd9289195ec0aaeddb15a4",
+    "geometry.py": "7ccba3cf675ad16ffbff61da09b3ff068eb4877fc584b99e3e09cc0b46db743a",
+    "kernels.py": "de15c6109a045d76b23cb2e0c41062dd5079ebe3097870b40a436d7e22a8729c",
+    "report.py": "dc23c90e0427daf3a4fab3079da25c8fbbff2662103ac922c3a81068e95b718c",
+    "run.py": "c2a4d33ab41a0241cd86e105aae24b67abd9dcf179509a88d44545186ea8702a",
+    "scenarios.py": "dba45504c40af77fab16bedea63d87fdc7b8d0449c57c8f7a72c4d3736e9d82b",
+    "simulation.py": "81711694348d9edf692e75dd23ab5ac8b7b30119e8241f1d3ca9d7d2ee78ca52",
+    "studies.py": "5b6c71eb5338b3ee6053051c82186185721443e29e5cd3152741ce1cbe47daf3"
+  },
+  "visual_refresh": "Failure snapshot excludes exited agents; calculations and all numerical results unchanged."
+}

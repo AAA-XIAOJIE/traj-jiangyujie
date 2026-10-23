@@ -1,0 +1,30 @@
+{
+  "seed": 42,
+  "models": ["sfm", "idm", "orca"],
+  "variants": ["base", "guided"],
+  "dt_s": 0.04,
+  "mixed_circle": {"agents": 64, "radius_m": 30.0, "duration_s": 80.0, "car_length_m": 4.4, "car_width_m": 1.8, "wheelbase_m": 2.7, "max_steer_angle_rad": 0.5235987756, "max_yaw_rate_rad_s": 0.35, "max_lateral_accel_m_s2": 2.0},
+  "narrow": {
+    "widths_m": [4.2, 3.2, 2.9, 2.6],
+    "duration_s": 40.0,
+    "road_length_m": 32.0,
+    "pedestrian_radius_m": 0.25,
+    "car_length_m": 4.4,
+    "car_width_m": 1.8,
+    "pedestrian_speed_m_s": 1.4,
+    "car_speed_m_s": 3.0,
+    "pedestrian_positions_m": [[4.0,-0.35],[4.0,0.35],[6.0,-0.35],[6.0,0.35],[8.0,-0.35],[8.0,0.35]],
+    "car_position_m": [28.0,0.0]
+  },
+  "sfm": {"A_m_s2": 4.0, "B_m": 0.5, "wall_A_m_s2": 4.0, "wall_B_m": 0.15},
+  "idm": {"s0_m": 0.15, "T_s": 0.6, "delta": 4.0, "lateral_buffer_m": 0.03},
+  "orca": {"horizon_s": 2.0},
+  "guidance": {"anticipation_s": 4.0, "side_bias_rad": 0.35, "right_probability": 0.65, "wall_margin_m": 0.02, "passing_margin_m": 0.08},
+  "dynamics": {"pedestrian_tau_s": 0.5, "car_tau_s": 1.0, "pedestrian_accel_m_s2": 3.0, "car_accel_m_s2": 1.5, "car_brake_m_s2": 4.0, "max_speed_factor": 1.2},
+  "prediction_before_running": [
+    "At 4.2 m there is geometric space for both sides; lack of lateral planning may still cause deadlock.",
+    "At 3.2 m geometric passing remains possible, but smaller clearance may increase delay and model failures.",
+    "At 2.9 m only 0.05 m spare width per occupied side is available: clearance and rule sensitivity are expected.",
+    "At 2.6 m a centered 1.8 m car leaves 0.4 m per side, less than a 0.5 m pedestrian: waiting is physically appropriate without reversing or moving the car laterally."
+  ]
+}

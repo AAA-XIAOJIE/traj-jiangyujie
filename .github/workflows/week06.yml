@@ -1,0 +1,36 @@
+name: week06-unified-agents
+on:
+  push:
+    paths:
+      - 'week06/**'
+      - 'tests/test_week06*'
+      - 'week02/model/**'
+      - 'week01/style.py'
+      - '.github/workflows/week06.yml'
+  pull_request:
+    paths:
+      - 'week06/**'
+      - 'tests/test_week06*'
+      - 'week02/model/**'
+      - 'week01/style.py'
+      - '.github/workflows/week06.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            week06/requirements.txt
+      - run: python -m pip install -r week06/requirements.txt pytest==9.1.1
+      - run: python -X utf8 -m week06.model.run --output .local/week06_ci --no-gif --no-studies
+      - run: python -m pytest -q tests/test_week06_models.py tests/test_week06_results.py
+        env:
+          WEEK06_RESULTS: .local/week06_ci
