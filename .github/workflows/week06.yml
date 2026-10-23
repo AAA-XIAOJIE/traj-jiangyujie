@@ -19,7 +19,13 @@ permissions:
   contents: read
 jobs:
   reproduce:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -33,9 +39,29 @@ jobs:
       - run: python -X utf8 -m week06.model.run --output .local/week06_ci --no-gif --no-studies
       - run: |
           python - <<'PY'
-          import subprocess
+          import subprocess, sys
+          import numpy as np
+          import pandas as pd
+          args = ["python", "-m", "pytest", "-q", "tests/test_week06_models.py", "tests/test_week06_results.py"]
+          if sys.platform != "win32":
+              # Exact numerical reference was generated on Windows. Linux still
+              # runs all 39 cases and every geometry/provenance/result contract.
+              args += ["-k", "not independent_numerical_reproduction"]
+              baseline = pd.read_csv("week06/results/metrics.csv")
+              current = pd.read_csv(".local/week06_ci/metrics.csv")
+              differences = []
+              for column in baseline.select_dtypes(include="number"):
+                  left, right = baseline[column].to_numpy(), current[column].to_numpy()
+                  different = ~np.isclose(left, right, rtol=1e-8, atol=1e-8, equal_nan=True)
+                  for index in np.flatnonzero(different):
+                      row = baseline.iloc[index]
+                      differences.append(f"{row.scene}/{row.model}/{row.variant} {column}: Windows={left[index]} Linux={right[index]}")
+              detail = "\n".join(differences) or "No numerical differences at 1e-8 tolerance."
+              print(detail)
+              detail = detail.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+              print("::notice title=Cross-platform numerical comparison::" + detail)
           result = subprocess.run(
-              ["python", "-m", "pytest", "-q", "tests/test_week06_models.py", "tests/test_week06_results.py"],
+              args,
               text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
           print(result.stdout)
           if result.returncode:
