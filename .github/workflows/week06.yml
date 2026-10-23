@@ -31,6 +31,17 @@ jobs:
             week06/requirements.txt
       - run: python -m pip install -r week06/requirements.txt pytest==9.1.1
       - run: python -X utf8 -m week06.model.run --output .local/week06_ci --no-gif --no-studies
-      - run: python -m pytest -q tests/test_week06_models.py tests/test_week06_results.py
+      - run: |
+          python - <<'PY'
+          import subprocess
+          result = subprocess.run(
+              ["python", "-m", "pytest", "-q", "tests/test_week06_models.py", "tests/test_week06_results.py"],
+              text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+          print(result.stdout)
+          if result.returncode:
+              detail = result.stdout[-20000:].replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+              print("::error title=Week06 reproducibility diagnostics::" + detail)
+          raise SystemExit(result.returncode)
+          PY
         env:
           WEEK06_RESULTS: .local/week06_ci

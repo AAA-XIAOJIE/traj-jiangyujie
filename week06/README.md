@@ -57,11 +57,11 @@ $g_{ij}$ 是有符号身体表面净距，重叠时为负；$\mathbf n_{ij}$ 从
 令 $\mathbf e_i$ 为期望运动方向，$u_i=\max(\mathbf v_i\cdot\mathbf e_i,0)$。沿该方向搜索身体可能相交的最近邻居；对向邻居的投影速度可以为负，闭合速度定义为 $\Delta u_i=u_i-\mathbf v_j\cdot\mathbf e_i$。
 
 $$
-s_i^*=s_0+\max\!\left(0,u_iT+
-\frac{u_i\Delta u_i}{2\sqrt{a_i b_i}}\right),
+s_{i}^{\ast}=s_{0}+\max\!\left(0,u_{i}T+
+\frac{u_{i}\Delta u_{i}}{2\sqrt{a_{i} b_{i}}}\right),
 \qquad
-a_i^{\parallel}=a_i\left[1-\left(\frac{u_i}{u_i^{pref}}\right)^4
--\left(\frac{s_i^*}{s_i}\right)^2\right].
+a_{i}^{\parallel}=a_{i}\left[1-\left(\frac{u_{i}}{u_{i}^{\mathrm{pref}}}\right)^4
+-\left(\frac{s_{i}^{\ast}}{s_{i}}\right)^2\right].
 $$
 
 $$
