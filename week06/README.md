@@ -33,20 +33,20 @@
 
 每个时间步同步读取全部主体状态，计算期望速度、交互响应、行动约束，再更新：
 
-$$
+```math
 \mathbf v_i^{n+1}=\mathcal C_i(\mathbf v_i^n+\Delta t\,\mathbf a_i^n),\qquad
 \mathbf x_i^{n+1}=\mathbf x_i^n+\Delta t\,\mathbf v_i^{n+1}.
-$$
+```
 
 ORCA 直接给出候选速度，再经过同一个行动约束算子 $\mathcal C_i$。改良窄路实验另有显式几何干预；其引起的加速度超限单独记录，不能当作模型自然产生的合理运动。
 
 ### 社会力 SFM：目标驱动与身体排斥
 
-$$
+```math
 \mathbf a_i=\frac{\mathbf v_i^{pref}-\mathbf v_i}{\tau_i}
  +\sum_{j\ne i} A\exp(-g_{ij}/B)\,\mathbf n_{ij}
  +\mathbf a_i^{wall}.
-$$
+```
 
 $g_{ij}$ 是有符号身体表面净距，重叠时为负；$\mathbf n_{ij}$ 从邻居指向自身。$A=4$ m/s²，$B=0.5$ m；边墙项使用 $A_w=4$ m/s²、$B_w=0.15$ m。$\tau_i$ 单位为秒，因此全部项均为加速度。
 
@@ -56,18 +56,18 @@ $g_{ij}$ 是有符号身体表面净距，重叠时为负；$\mathbf n_{ij}$ 从
 
 令 $\mathbf e_i$ 为期望运动方向，$u_i=\max(\mathbf v_i\cdot\mathbf e_i,0)$。沿该方向搜索身体可能相交的最近邻居；对向邻居的投影速度可以为负，闭合速度定义为 $\Delta u_i=u_i-\mathbf v_j\cdot\mathbf e_i$。
 
-$$
+```math
 s_{i}^{\ast}=s_{0}+\max\!\left(0,u_{i}T+
 \frac{u_{i}\Delta u_{i}}{2\sqrt{a_{i} b_{i}}}\right),
 \qquad
 a_{i}^{\parallel}=a_{i}\left[1-\left(\frac{u_{i}}{u_{i}^{\mathrm{pref}}}\right)^4
 -\left(\frac{s_{i}^{\ast}}{s_{i}}\right)^2\right].
-$$
+```
 
-$$
+```math
 \mathbf a_i=a_i^{\parallel}\mathbf e_i-
 \frac{\mathbf v_i-u_i\mathbf e_i}{\tau_i}.
-$$
+```
 
 $s_0=0.15$ m、$T=0.6$ s；$a_i,b_i$ 为加速和减速参数，单位 m/s²。射线搜索添加 0.03 m 横向缓冲；矩形采用扩张包围盒，圆盘采用射线—圆相交。计算时净距下限 0.02 m、期望速度下限 0.05 m/s 仅用于防止除零，实际重叠仍按原身体几何记录。
 
@@ -75,11 +75,11 @@ $s_0=0.15$ m、$T=0.6$ s；$a_i,b_i$ 为加速和减速参数，单位 m/s²。�
 
 ### ORCA：选择尽量接近期望速度的避碰速度
 
-$$
+```math
 \mathbf v_i^{ORCA}=\arg\min_{\mathbf v\in
  \bigcap_j H_{ij},\,\|\mathbf v\|\le v_i^{max}}
  \|\mathbf v-\mathbf v_i^{pref}\|^2 .
-$$
+```
 
 预测时域为 2 s；$H_{ij}$ 为相邻主体各承担一半避让责任形成的速度半平面。复用第二周 RVO2/ORCA 线性规划求解器。
 
@@ -102,7 +102,9 @@ $$
 
 运行前的预测保存在 [config.json](config.json)：4.2 m 有充足侧向空间；3.2 m 仍可通过但更易冲突；2.9 m 接近几何极限；2.6 m 应等待。居中汽车两侧各能容纳一个 0.5 m 宽行人的零缓冲条件为：
 
-$$W_{\min}=1.8+2\times0.5=2.8\ {\rm m}.$$
+```math
+W_{\min}=1.8+2\times0.5=2.8\ {\rm m}.
+```
 
 这是**车辆始终居中且不倒退**的本场景限制，不是所有道路的通用通行阈值。2.9 m 只有每侧 0.05 m 余量，舒适距离和避让规则仍可能无法利用这点空间。
 
@@ -120,11 +122,11 @@ $$W_{\min}=1.8+2\times0.5=2.8\ {\rm m}.$$
 
 有限转向先得到同一交互核心的候选速度，再限制车头方向增量：
 
-$$
+```math
 |\Delta\theta|\le\Delta t\min\left(0.35,\,
 \frac{v\tan(30^\circ)}{2.7},\,
 \frac{2.0}{\max(v,0.1)}\right).
-$$
+```
 
 三个约束分别来自最大角速度 0.35 rad/s、轴距 2.7 m/最大转角 30°、最大横向加速度 2 m/s²。车辆沿限幅后的车头方向推进，不能瞬间横移；同时保留加减速界限。此为受自行车几何启发的运动学限制，未建完整轮胎/转向执行器动力学。实际转向与加速度违规由指标核查，不预先假定改进一定成功。
 
