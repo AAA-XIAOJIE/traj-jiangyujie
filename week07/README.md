@@ -28,13 +28,13 @@
 令 $`d_{ij}=\|\mathbf{p}_{i}-\mathbf{p}_{j}\|`$，$`\mathbf{n}_{ij}=(\mathbf{p}_{i}-\mathbf{p}_{j})/d_{ij}`$ 是远离邻居的单位向量：
 
 ```math
-\mathbf{u}_{i}=\operatorname{cap}_{2}\left[
+\mathbf{u}_{i}=\mathrm{cap}_{2}\left[
 \mathbf{v}_{i}^{\mathrm{goal}}+
 \eta\sum_{j\neq i}\max\!\left(\frac{1}{\max(d_{ij},0.05)}-\frac{1}{d_0},0\right)
 \mathbf{n}_{ij}\right].
 ```
 
-$`d_0=3`$ m，$`\eta=3`$ m²/s；$`\operatorname{cap}_{2}`$ 保持方向，将速度模长限制到 2 m/s。距离项为 1/m，乘以增益后为 m/s，**公式直接输出速度，没有牛顿力、质量或加速度积分**。0.05 m 是防止除零的数值下限。
+$`d_0=3`$ m，$`\eta=3`$ m²/s；$`\mathrm{cap}_{2}`$ 保持方向，将速度模长限制到 2 m/s。距离项为 1/m，乘以增益后为 m/s，**公式直接输出速度，没有牛顿力、质量或加速度积分**。0.05 m 是防止除零的数值下限。
 
 越靠近邻居，向外的速度修正越强；3 m 外不修正。这是受人工势场思想启发的课程速度场实现，不是原论文控制器的逐项复现。它不预测未来，因而不使用预测时域 $`\tau`$。
 
@@ -45,7 +45,7 @@ $`d_0=3`$ m，$`\eta=3`$ m²/s；$`\operatorname{cap}_{2}`$ 保持方向，将�
 对候选速度 $`\mathbf{c}`$ 与邻居旧速度 $`\mathbf{v}_{j}`$，令 $`\mathbf{q}=\mathbf{p}_{j}-\mathbf{p}_{i}`$、$`\mathbf{w}=\mathbf{c}-\mathbf{v}_{j}`$：
 
 ```math
-t_{\mathrm{ca}}=\operatorname{clip}
+t_{\mathrm{ca}}=\mathrm{clip}
 \left(\frac{\mathbf{q}\cdot\mathbf{w}}{\|\mathbf{w}\|^2},0,\tau\right),
 \quad d_{\mathrm{pred}}=\|\mathbf{q}-t_{\mathrm{ca}}\mathbf{w}\|,
 \quad \tau=5\ \mathrm{s}.
