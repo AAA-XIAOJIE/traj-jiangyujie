@@ -62,12 +62,23 @@ def test_published_metrics_reconstructed_from_positions(name):
     path=np.linalg.norm(np.diff(p,axis=0),axis=2)
     assert path.max()/dt<=2+1e-7
     assert path.sum(axis=0).mean()==pytest.approx(row.mean_path_length_m,abs=1e-6)
+    np.testing.assert_allclose(path.sum(axis=0),z[name+'__path_lengths'],atol=1e-9)
     encountered=np.zeros(len(pairs[0]),bool);minimum=np.inf;count=0
     for k in range(len(p)-1):
-        d=swept_distances(p[k],(p[k+1]-p[k])/dt,dt,pairs)
+        # Independent 3D point-to-segment geometry, without the simulator helper:
+        # use endpoint distances unless the perpendicular foot lies inside;
+        # interior distance equals triangle area / segment length.
+        q0=p[k,pairs[0]]-p[k,pairs[1]]
+        q1=p[k+1,pairs[0]]-p[k+1,pairs[1]]
+        segment=q1-q0;norm2=np.sum(segment*segment,axis=1)
+        dot=np.sum(q0*segment,axis=1)
+        inside=(dot<0)&(-dot<norm2)&(norm2>0)
+        d=np.minimum(np.linalg.norm(q0,axis=1),np.linalg.norm(q1,axis=1))
+        d[inside]=np.linalg.norm(np.cross(q0[inside],q1[inside]),axis=1)/np.sqrt(norm2[inside])
         bad=d<1-CFG['distance_tolerance_m'];encountered|=bad;count+=int(bad.sum());minimum=min(minimum,d.min())
     assert minimum==pytest.approx(row.minimum_separation_m,abs=1e-7)
     assert int(encountered.sum())==row.violating_unique_pairs
+    np.testing.assert_array_equal(z[name+'__violation_pairs'],np.column_stack(pairs)[encountered])
     assert count==row.violating_pair_steps
     arrival=[]
     for i in range(100):
@@ -79,6 +90,48 @@ def test_published_metrics_reconstructed_from_positions(name):
     if len(arrival)==100:assert max(arrival)==pytest.approx(row.all_arrival_time_s)
     else:assert pd.isna(row.all_arrival_time_s)
     assert bool(row.collision_free_complete)==(len(arrival)==100 and not encountered.any())
+
+
+def test_partial_rerun_rejects_stale_outputs(tmp_path):
+    from types import SimpleNamespace
+    from week07.model.run import check_output_reuse
+    (tmp_path/'comparison.gif').write_bytes(b'old animation')
+    args=SimpleNamespace(figures_only=False,no_figures=False,no_animation=True,no_studies=False)
+    with pytest.raises(ValueError,match='retain old outputs'):
+        check_output_reuse(tmp_path,args)
+    assert (tmp_path/'comparison.gif').read_bytes()==b'old animation'
+
+
+def test_figures_only_rejects_tampered_saved_data(tmp_path):
+    import shutil
+    from week07.model.run import verify_saved_results
+    receipt=json.loads((OUT/'reproducibility.json').read_text())
+    receipt['output_sha256']={k:v for k,v in receipt['output_sha256'].items() if k in ('metrics.csv','trajectories.npz')}
+    for name in receipt['output_sha256']:
+        shutil.copy2(OUT/name,tmp_path/name)
+    (tmp_path/'reproducibility.json').write_text(json.dumps(receipt))
+    verify_saved_results(tmp_path)
+    with (tmp_path/'metrics.csv').open('a') as f:
+        f.write('\nchanged')
+    with pytest.raises(ValueError,match='metrics.csv'):
+        verify_saved_results(tmp_path)
+
+
+def test_timeout_is_incomplete_and_still_plots(tmp_path):
+    from copy import deepcopy
+    from week07.model.simulation import simulate
+    from week07.model.figures import metrics_figure
+    cfg=deepcopy(CFG);cfg['agents']=6;cfg['duration_s']=.2
+    rows=[]
+    for name in ('apf','vo','cbf'):
+        row,trace=simulate(cfg,name)
+        assert row['arrived']==0 and row['arrival_rate']==0
+        assert row['all_arrival_time_s'] is None and not row['collision_free_complete']
+        assert row['simulated_time_s']==pytest.approx(.2)
+        assert np.isnan(trace['arrival_times']).all()
+        rows.append(row)
+    metrics_figure(pd.DataFrame(rows),tmp_path)
+    assert (tmp_path/'metrics.png').stat().st_size>1000
 
 
 def test_barrier_main_case_completes_safely():

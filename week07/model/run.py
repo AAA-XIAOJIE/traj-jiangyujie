@@ -22,6 +22,43 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def verify_saved_results(out):
+    """Do not turn modified or mismatched saved data into newly certified plots."""
+    receipt=json.loads((out/'reproducibility.json').read_text(encoding='utf8'))
+    if receipt['config_sha256'] != digest(WEEK/'config.json'):
+        raise ValueError('Configuration changed: rerun simulations in a fresh output directory.')
+    for name,h in receipt['numerical_source_sha256'].items():
+        if digest(WEEK/'model'/name) != h:
+            raise ValueError('Numerical code changed: rerun simulations.')
+    outputs=receipt['output_sha256']
+    if not {'metrics.csv','trajectories.npz'}.issubset(outputs):
+        raise ValueError('Saved results do not certify metrics.csv and trajectories.npz.')
+    for name,h in outputs.items():
+        path=out/name
+        if not path.is_file() or digest(path) != h:
+            raise ValueError(f'Saved result changed or missing: {name}. Rerun simulations.')
+
+
+def check_output_reuse(out, args):
+    """Partial reruns must not silently retain outputs of an older simulation."""
+    if args.figures_only:
+        if args.no_figures:
+            raise ValueError('--figures-only conflicts with --no-figures.')
+        verify_saved_results(out)
+        return
+    skipped=[]
+    if args.no_studies:
+        skipped.append('sensitivity.csv')
+    if args.no_figures:
+        skipped += ['overview.png','metrics.png','trajectory_projections.png','closest_encounters.png']
+    if args.no_figures or args.no_animation:
+        skipped.append('comparison.gif')
+    stale=[name for name in skipped if (out/name).exists()]
+    if stale:
+        raise ValueError('Partial rerun would retain old outputs: '+', '.join(stale)+
+                         '. Use --output with a fresh directory, or run without skip flags.')
+
+
 def save_manifest(out):
     # Git stores LF text. Hash canonical bytes so archives and Windows/Linux
     # checkouts validate the same evidence instead of platform newline changes.
@@ -65,11 +102,8 @@ def main():
     args=parser.parse_args()
     out=args.output.resolve();out.mkdir(parents=True,exist_ok=True)
     cfg=json.loads((WEEK/'config.json').read_text(encoding='utf8'))
+    check_output_reuse(out,args)
     if args.figures_only:
-        receipt=json.loads((out/'reproducibility.json').read_text(encoding='utf8'))
-        assert receipt['config_sha256']==digest(WEEK/'config.json'), 'Configuration changed: rerun simulations.'
-        for name,h in receipt['numerical_source_sha256'].items():
-            assert digest(WEEK/'model'/name)==h, 'Numerical code changed: rerun simulations.'
         metrics=pd.read_csv(out/'metrics.csv')
         archive=np.load(out/'trajectories.npz')
         traces={name:{key.split('__')[1]:archive[key] for key in archive.files if key.startswith(name+'__')} for name in cfg['models']}

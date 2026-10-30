@@ -127,11 +127,18 @@ def metrics_figure(metrics,out):
     spec=[('arrival_rate','Arrival (%)',100),('minimum_separation_m','Minimum separation (m)',1),
           ('violating_unique_pairs','Unique violating pairs',1),('all_arrival_time_s','All-arrival time (s)',1),('mean_path_length_m','Mean path length (m)',1)]
     for ax,(column,title,factor) in zip(axes,spec):
-        values=metrics[column].to_numpy()*factor
-        bars=ax.bar(labels,values,color=colors,width=.6)
+        values=np.asarray(metrics[column],dtype=float)*factor
+        finite=values[np.isfinite(values)]
+        top=float(finite.max()) if len(finite) and finite.max()>0 else 1.
+        bars=ax.bar(labels,np.where(np.isfinite(values),values,0.),color=colors,width=.6)
         for bar,value in zip(bars,values):
-            ax.text(bar.get_x()+bar.get_width()/2,value+(max(values)*.035 if max(values)>0 else .1),f'{value:.2f}' if column not in ('arrival_rate','violating_unique_pairs') else f'{value:.0f}',ha='center',fontsize=9)
-        ax.set_title(title,fontsize=10);ax.set_ylim(0,max(values)*1.25 if max(values)>0 else 1)
+            center=bar.get_x()+bar.get_width()/2
+            if np.isfinite(value):
+                ax.text(center,value+top*.035,f'{value:.2f}' if column not in ('arrival_rate','violating_unique_pairs') else f'{value:.0f}',ha='center',fontsize=9)
+            else:
+                label='Not all\narrived' if column=='all_arrival_time_s' else 'Unavailable'
+                ax.text(center,.08,label,ha='center',fontsize=8,transform=ax.get_xaxis_transform())
+        ax.set_title(title,fontsize=10);ax.set_ylim(0,top*1.25)
         ax.tick_params(axis='x',labelsize=8,rotation=25);ax.grid(axis='y',alpha=.15)
         if column=='minimum_separation_m':ax.axhline(1,color='#A83232',ls='--',lw=1)
     fig.suptitle('Arrival is not sufficient: safety and completion must be reported together',fontsize=15,fontweight='bold')
