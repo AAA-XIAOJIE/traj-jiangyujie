@@ -1,0 +1,41 @@
+{
+  "apf": {
+    "first_unsafe_interval": {
+      "step": 110,
+      "time_start_s": 11.0,
+      "ids": [
+        8,
+        81
+      ],
+      "initial_separation_m": 1.010601742417609,
+      "continuous_step_minimum_m": 0.9520800117199026,
+      "time_of_minimum_s": 11.1,
+      "frozen_neighbor_velocity_prediction_m": [
+        0.3487503484862833,
+        0.39260876539717654
+      ],
+      "interpretation": "Prediction keeps the neighbor previous velocity; actual update changes both velocities simultaneously."
+    }
+  },
+  "vo": {
+    "first_unsafe_interval": {
+      "step": 83,
+      "time_start_s": 8.3,
+      "ids": [
+        2,
+        7
+      ],
+      "initial_separation_m": 1.1215636462072325,
+      "continuous_step_minimum_m": 0.9811894898264297,
+      "time_of_minimum_s": 8.4,
+      "frozen_neighbor_velocity_prediction_m": [
+        1.0654306757080907,
+        1.0937219734665022
+      ],
+      "interpretation": "Prediction keeps the neighbor previous velocity; actual update changes both velocities simultaneously."
+    }
+  },
+  "cbf": {
+    "first_unsafe_interval": null
+  }
+}

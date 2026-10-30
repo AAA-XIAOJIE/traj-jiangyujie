@@ -1,0 +1,41 @@
+name: week07-uav-sphere
+on:
+  push:
+    paths: ['week07/**', 'tests/test_week07.py', '.github/workflows/week07.yml', 'week01/style.py']
+  pull_request:
+    paths: ['week07/**', 'tests/test_week07.py', '.github/workflows/week07.yml', 'week01/style.py']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            week07/requirements.txt
+      - run: python -m pip install -r week07/requirements.txt pytest==9.1.1
+      - run: python -X utf8 -m week07.model.run --output .local/week07_ci --no-figures --no-studies
+      - run: |
+          python - <<'PY'
+          import subprocess
+          result=subprocess.run(['python','-m','pytest','-q','tests/test_week07.py'],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+          print(result.stdout)
+          if result.returncode:
+              detail=result.stdout[-20000:].replace('%','%25').replace('\r','%0D').replace('\n','%0A')
+              print('::error title=Week07 validation::'+detail)
+          raise SystemExit(result.returncode)
+          PY
+        env:
+          WEEK07_RESULTS: .local/week07_ci

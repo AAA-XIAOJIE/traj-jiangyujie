@@ -1,0 +1,27 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "osqp": "1.1.3",
+  "config_sha256": "34223db393385f39f44fdf2739344c4dcb8ddb88e26bdbd34d080d6c90cfe83b",
+  "numerical_source_sha256": {
+    "core.py": "dba2edcf7b3d25ced6070168d9b0de419642936602cbcc53efcc90c246e21eff",
+    "simulation.py": "68287970c7da0220bce06bf47b3c87beac32d265085974bb8f67491b2cb29273"
+  },
+  "output_sha256": {
+    "agent_metrics.csv": "0a95b175b5f86ff5d0032a168af436ff4e2dc1b42f2d85e9582b2229d12dcd0a",
+    "closest_encounters.png": "2626847a15bad2921342c7fb374c1c8a518991144aa99266621313122cdbecdf",
+    "comparison.gif": "08088367837955c0ad6f84903abe37986ec69891f259062974e6c05d47a87f27",
+    "experiment.json": "2f1d0cc0854ac8866d4e93881193648127dd66a3ee160665e0e22310ffb2f105",
+    "failure_diagnostics.json": "1d237377cc5d2827244ed54745e976d6b048bef8b7b359e2b740e27ec9274a79",
+    "initial_conditions.csv": "9fd0f2eeb127f298ace361254f537d8bdfd4d3535edb74a3615243be343a47a7",
+    "metrics.csv": "bc9d208dd0b96c22e340a8cbd35b217dcae9915841c62a07747400cd7a51666b",
+    "metrics.png": "4591d0fb5f276d4b9329109c6276a5f6b09c81d1baa6e46ac80739028334a351",
+    "overview.png": "3c1aee259226758a80694ac48afe45adb6896b34288d3f69c21b71eb85ec3798",
+    "sensitivity.csv": "76b3d0c867606ca21089673868d0b216dea7da02f524a8260f66a2af4ee53b1c",
+    "time_series.csv": "c8755acdae8146545004b567568f52d497292d6b056baddb14d3c1449937b1c3",
+    "trajectories.npz": "052d274154c69deb682ef376cfbf783e3e5334ed1155f75c8e1b63611c17cf86",
+    "trajectory_projections.png": "a03abe404856643de3cada6dc4667b7b5a22275bf725efb373bae1aca27017e5"
+  }
+}

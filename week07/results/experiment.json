@@ -1,0 +1,49 @@
+{
+  "agents": 100,
+  "sphere_radius_m": 20.0,
+  "body_radius_m": 0.5,
+  "maximum_speed_m_s": 2.0,
+  "dt_s": 0.1,
+  "horizon_s": 5.0,
+  "duration_s": 120.0,
+  "goal_tolerance_m": 1.0,
+  "distance_tolerance_m": 1e-06,
+  "models": [
+    "apf",
+    "vo",
+    "cbf"
+  ],
+  "apf": {
+    "influence_m": 3.0,
+    "gain_m2_s": 3.0
+  },
+  "vo": {
+    "sphere_directions": 32,
+    "cone_angles_deg": [
+      15,
+      35,
+      65
+    ],
+    "cone_azimuths": 8,
+    "inertia_weight": 0.1
+  },
+  "cbf": {
+    "separation_margin_m": 0.05,
+    "swirl_speed_m_s": 2.0,
+    "swirl_radius_m": 9.0,
+    "axis": [
+      0.3,
+      0.5,
+      1.0
+    ],
+    "eps_abs": 1e-06,
+    "eps_rel": 1e-06,
+    "max_iter": 4000
+  },
+  "initialization": "Fibonacci sphere: equal-area z bands and golden-angle azimuth",
+  "simulation_type": "single-integrator kinematics, direct velocity commands",
+  "no_mass_force_acceleration_model": true,
+  "stopped_agents_remain_obstacles": true,
+  "intrusion_definition": "unique unordered pairs with continuous-step center distance < 1 m minus 1e-6 m tolerance",
+  "shortest_direct_path_to_goal_region_m": 39.0
+}

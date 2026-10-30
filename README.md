@@ -2,6 +2,7 @@
 
 姜昱杰的课程作业，按 `week01`–`week08` 组织。
 
+- [第 7 周：100 架无人机三维对跖冲突](week07/README.md)：三种速度控制算法、同步三维动画、五项指标和失败诊断。
 - [第 6 周：统一人车模型与窄路/圆环实验](week06/README.md)：三类共同模型、通行与等待、身体几何、真实圆环对照及失败修复。
 - [第 5 周：OVM、FVDM、IDM 跟驰模型](week05/README.md)：原式与单位核验、NGSIM 回放、匀速及制动干预、误差与失败。
 - [第 4 周：NGSIM 交通流基本图](week04/README.md)：四种计算方法、时间与空间敏感性、一页结果报告。
@@ -13,9 +14,11 @@
 
 第三周使用独立的 PyTorch 环境和 [week03/requirements.txt](week03/requirements.txt)。从根目录运行 `python -X utf8 -m week03.model.run --evaluate-only` 复核已训练权重，再用 `python -X utf8 -m week03.model.plots` 绘图。重新训练时运行 `python -X utf8 -m week03.model.run --output .local/week03_retrain`，保留已提交的结果。
 
-![第六周：区分规则失败与空间限制](week06/results/failure_and_repair.png)
+![第七周：100 架无人机三模型轨迹与安全对比](week07/results/overview.png)
 
-**本周交付：** [模型、参数与结论](week06/README.md) · [一页结果 PDF](week06/results/one_page.pdf) · [窄路动画](week06/results/narrow_comparison.gif) · [圆环对照动画](week06/results/circle_comparison.gif) · [代码](week06/model)
+**本周交付：** [算法、参数与结论](week07/README.md) · [三维同步动画](week07/results/comparison.gif) · [五项指标](week07/results/metrics.csv) · [代码](week07/model)
+
+第七周复现：`python -m pip install -r week07/requirements.txt`，然后 `python -X utf8 -m week07.model.run`。三种方法都直接控制三维速度，不建质量或力模型；联合屏障优化在本场景中安全完成 100/100 架，其他方法的安全间隔侵入如实报告。
 
 第六周复现：`python -m pip install -r week06/requirements.txt`，然后运行 `python -X utf8 -m week06.model.run`。可离线完成 39 组主实验与 17 组消融/敏感性实验；混合圆环为 32 人与 32 车交替排列，有限转向作为改进模型。
 
@@ -44,7 +47,8 @@ python -X utf8 run.py --download
 - `week04/`：NGSIM 四种基本图计算、尺度敏感性与一页报告。
 - `week05/`：三种跟驰模型、单位核验、NGSIM 轨迹对照与干预实验。
 - `week06/`：SFM、IDM-heading、ORCA 统一人车模型，窄路与圆环实验。
-- `week07/`–`week08/`：保留后续周次的作业目录。
+- `week07/`：人工势场、三维 VO 采样与联合屏障速度优化，100 架无人机球面对跖实验。
+- `week08/`：保留后续周次的作业目录。
 - `configs/week01.json`：场景、帧率、断线阈值和分辨率。
 - `data/manifest.json`：固定下载地址、文件大小和 SHA-256。
 - `tests/`：坐标顺序、个体隔离、时间断线及校验测试；GitHub 自动运行。

@@ -1,0 +1,4 @@
+model,agents,arrived,arrival_rate,minimum_separation_m,violating_unique_pairs,violating_pair_steps,all_arrival_time_s,mean_path_length_m,simulated_time_s,max_speed_m_s,fallback_agent_or_system_steps,solver_failure_steps,runtime_s,collision_free_complete
+apf,100,100,1,0.8353782872,34,157,32,42.1489479,32,2,0,0,0.2554185999,False
+vo,100,100,1,0.6772155935,265,1426,28,44.681,28,2,1531,0,19.9884853,False
+cbf,100,100,1,1.289822317,0,0,34.2,43.8175959,34.2,2,0,0,17.4595344,True

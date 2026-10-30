@@ -1,0 +1,15 @@
+{
+  "agents": 100,
+  "sphere_radius_m": 20.0,
+  "body_radius_m": 0.5,
+  "maximum_speed_m_s": 2.0,
+  "dt_s": 0.1,
+  "horizon_s": 5.0,
+  "duration_s": 120.0,
+  "goal_tolerance_m": 1.0,
+  "distance_tolerance_m": 0.000001,
+  "models": ["apf", "vo", "cbf"],
+  "apf": {"influence_m": 3.0, "gain_m2_s": 3.0},
+  "vo": {"sphere_directions": 32, "cone_angles_deg": [15, 35, 65], "cone_azimuths": 8, "inertia_weight": 0.1},
+  "cbf": {"separation_margin_m": 0.05, "swirl_speed_m_s": 2.0, "swirl_radius_m": 9.0, "axis": [0.3, 0.5, 1.0], "eps_abs": 0.000001, "eps_rel": 0.000001, "max_iter": 4000}
+}
