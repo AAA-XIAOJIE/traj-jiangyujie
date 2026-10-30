@@ -23,12 +23,20 @@ def digest(path):
 
 
 def save_manifest(out):
+    # Git stores LF text. Hash canonical bytes so archives and Windows/Linux
+    # checkouts validate the same evidence instead of platform newline changes.
+    text_outputs=['metrics.csv','agent_metrics.csv','initial_conditions.csv',
+                  'time_series.csv','sensitivity.csv','experiment.json','failure_diagnostics.json']
+    for name in text_outputs:
+        path=out/name
+        if path.exists():
+            path.write_text(path.read_text(encoding='utf8'),encoding='utf8',newline='\n')
     receipt = {'python': sys.version, 'platform': platform.platform(),
                'numpy': np.__version__, 'scipy': scipy.__version__, 'osqp': osqp.__version__,
                'config_sha256': digest(WEEK/'config.json'),
                'numerical_source_sha256': {p.name:digest(p) for p in [WEEK/'model/core.py', WEEK/'model/simulation.py']},
                'output_sha256':{p.name:digest(p) for p in sorted(out.iterdir()) if p.is_file() and p.name!='reproducibility.json'}}
-    (out/'reproducibility.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+    (out/'reproducibility.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n',encoding='utf8',newline='\n')
 
 
 def studies(cfg):
